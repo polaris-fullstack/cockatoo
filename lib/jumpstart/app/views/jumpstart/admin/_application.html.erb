@@ -1,0 +1,48 @@
+<h4>Application Details</h4>
+
+<div class="form-group">
+  <%= f.label :application_name %>
+  <%= f.text_field :application_name, placeholder: "My App", class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :business_name %>
+  <%= f.text_field :business_name, placeholder: "My Company, LLC", class: "form-control" %>
+  <p class="form-hint">This will be shown in the footer, terms of service, privacy policy, in receipts, etc.</small>
+</div>
+
+<div class="form-group">
+  <%= f.label :business_address %>
+  <%= f.text_area :business_address, placeholder: "1234 My Street\nCity, State Zipcode", class: "form-control" %>
+  <p class="form-hint">Your business address will be used in receipts.</small>
+</div>
+
+<div class="form-group">
+  <%= f.label :support_email %>
+  <%= f.text_field :support_email, placeholder: "support@example.com", class: "form-control" %>
+  <p class="form-hint">This email will be used in receipts if a user needs help.</small>
+</div>
+
+<div class="form-group">
+  <label>Transactional Email Service</label>
+  <%= f.select :email_provider, Jumpstart::Configuration::MAIL_PROVIDERS, { include_blank: "None" }, { class: "form-control" } %>
+  <p class="form-hint">This will only be configured for production use.</p>
+</div>
+
+<div class="form-group">
+  <%= f.label :domain %>
+  <%= f.text_field :domain, placeholder: "support@example.com", class: "form-control" %>
+  <p class="form-hint">We'll use this domain to generate links inside emails.</p>
+</div>
+
+<div class="form-group">
+  <%= f.label :default_from_email %>
+  <%= f.text_field :default_from_email, placeholder: "noreply@example.com", class: "form-control" %>
+  <p class="form-hint">When sending emails, we'll send them from this email address by default unless you override it in the mailer.</p>
+</div>
+
+<div class="form-group">
+  <label>Background Job Processor</label>
+  <%= f.select :background_job_processor, Jumpstart::Configuration::QUEUE_ADAPTERS, {}, { class: "form-control" } %>
+  <p class="form-hint">Used for sending emails, broadcasting events, and more.</p>
+</div>

@@ -1,0 +1,136 @@
+<% content_for :title, "Using Jumpstart Pro iOS & Android with Existing Apps" %>
+<% content_for :subtitle do %>
+  If you're not using Jumpstart Pro Rails, here are the steps needed to update your web application to work with Jumpstart Pro iOS &amp; Android.
+<% end %>
+
+<%= h2_with_anchor "API Endpoints" %>
+
+<p>Your Rails API will be used for authentication and other features.</p>
+<p>The host and URL base path are configurable in the iOS / Android app Endpoint configuration. By default, the host is <code>http://localhost:3000</code> and base API uri is <code>/api/v1</code>. You can change this configuration to match your application&#39;s API.</p>
+<p>When making requests to the API, you&#39;ll want to follow these rules:</p>
+
+<ul>
+  <li>Include <code>Android (Hotwire Native)</code> or <code>iOS (Hotwire Native)</code> in the User Agent for all API requests. This tells the API the request came from Hotwire Native and should be handled accordingly.</li>
+  <li>Use the <code>Authorization</code> header to authenticate user with an API token</li>
+</ul>
+
+<%= h2_with_anchor "Mobile Views" %>
+
+<p>Some views will need a custom version for Hotwire Native. You can use <a href="https://gorails.com/episodes/rails-request-variants" class="link">Request Variants</a> to accomplish this.</p>
+<p>Hotwire includes a <code>hotwire_native_app?</code> helper that checks the <code>User-Agent</code> header for Hotwire Native. You can set the request variant for Hotwire Native requests using that.</p>
+<div class="not-prose">
+  <pre class="lang-ruby"><code>before_action do
+  request.variant = :phone if hotwire_native_app?
+end</code></pre>
+</div>
+
+<%= h2_with_anchor "Navbar" %>
+
+<p>The iOS / Android app uses a native header so it feels native. We add a hamburger button to this which triggers a Javascript event using the Hotwire Native Bridge.</p>
+<p>In Rails, you&#39;ll want to hide your navbar on Hotwire Native requests. Use a request variant template for this so you can minimize the HTML used for mobile.</p>
+<p>The menu should be hidden, but toggles when the <code>toggle-nav-bar</code> event fires. You can create a simple Stimulus Controller to listen to that event and toggle the navbar visibility.</p>
+
+<%= h2_with_anchor "Hotwire Native Bridge" %>
+
+<p>Bridge components are how your iOS / Android app and JavaScript talk to each other. Bridge components are Stimulus controllers that can be used to do things like add native submit buttons on mobile apps so they feel more integrated. Learn more in the <%= link_to "Hotwire Native docs", "https://native.hotwired.dev/overview/bridge-components", target: :_blank %>.</p>
+
+<%= h2_with_anchor "Authentication" %>
+
+<p>Authentication requires an API endpoint that accepts <code>email</code> and <code>password</code> params.</p>
+<p>It should:</p>
+
+<ul>
+  <li>Respond to <code>POST /api/v1/auth</code></li>
+  <li>Validate the email and password</li>
+  <li>Sign the user in (with cookies)</li>
+  <li>Find or create an API token for the user</li>
+  <li>Return a 200 OK JSON response with cookies</li>
+</ul>
+<p>Successful authentication will refresh the currently visible page.</p>
+
+<%= h2_with_anchor "Sign out" %>
+
+<p>Sign out must happen on the iOS / Android app side. That way we can make an API request to remove the NotificationToken and clear cookies in the WebView.</p>
+<p>To intercept the Sign out link in the HTML, use the following Bridge component:</p>
+<div class="not-prose">
+  <pre><code class="lang-javascript">import { BridgeComponent } from "@hotwired/hotwire-native-bridge"
+
+export default class extends BridgeComponent {
+  static component = "sign-out"
+
+  static values = {
+    path: String
+  }
+
+  signOut(event) {
+    event.preventDefault()
+    event.stopImmediatePropagation()
+
+    const path = this.pathValue
+    this.send("signOut", {path}, () => {})
+  }
+}</code></pre>
+</div>
+
+<p>The API endpoint for Sign out needs to do two things:</p>
+
+<ul>
+  <li>Respond to <code>DELETE /api/v1/auth</code></li>
+  <li>Delete the NotificationToken</li>
+  <li>Sign out the current user (removing cookies)</li>
+  <li>Returns a 200 OK response</li>
+</ul>
+
+<%= h2_with_anchor "Update Password" %>
+
+<p>Changing your password is a simple API request</p>
+<p><code>PATCH /api/v1/password</code></p>
+<p>Headers:</p>
+
+<ul>
+  <li><code>Cookie</code> - The user&#39;s session cookie</li>
+</ul>
+<p>Params:</p>
+<ul>
+  <li><code>user[current_password]</code> - The user&#39;s current password</li>
+  <li><code>user[password]</code> - The new password</li>
+  <li><code>user[password_confirmation]</code> - The new password</li>
+</ul>
+
+<p>Returns:</p>
+<p>Success - 200 OK</p>
+<div class="not-prose">
+  <pre><code class="lang-json">{ success: true }</code></pre>
+</div>
+<p>Failure - 422 Unprocessable Entity</p>
+
+<div class="not-prose">
+  <pre><code class="lang-json">{ error: "Password confirmation did not match" }</code></pre>
+</div>
+
+<%= h2_with_anchor "Push Notifications" %>
+
+<p>Registering for Push Notifications happens when the user is signed in.</p>
+<p>The Backend needs NotificationToken model to store the token and platform for push notifications.</p>
+
+<div class="not-prose">
+  <pre><code class="lang-bash">rails g model NotificationToken user:belongs_to <span class="hljs-built_in">platform</span> <span class="hljs-keyword">token</span></code></pre>
+</div>
+
+<p>An API endpoint for notification tokens should:</p>
+
+<ul>
+  <li>Respond to <code>POST /api/v1/notification_tokens</code></li>
+  <li>Use <code>Cookie</code> header to authenticate user with their session cookie</li>
+  <li>Accept params:<ul>
+      <li><code>token</code> - device notification token</li>
+      <li><code>platform</code> - platform of device (iOS, fcm). "fcm" is Firebase Cloud Messaging which is used for Android.</li>
+    </ul>
+  </li>
+  <li>Find or create NotificationToken record for user with params</li>
+  <li>Return 200 OK if successful</li>
+</ul>
+
+<%= h2_with_anchor "CSS" %>
+
+<p>We also recommend adding <code>class="hotwire-native"</code> to the html or body element in your layout <code>if hotwire_native_app?</code> to implement styling for native apps. This is already implemented in Jumpstart Pro Rails and ready to use.</p>

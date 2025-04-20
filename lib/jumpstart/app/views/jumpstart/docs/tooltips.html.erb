@@ -1,0 +1,15 @@
+<% content_for :title, "Tooltips" %>
+
+<%= h2_with_anchor "Overview" %>
+<p>Tooltips are powered by <%= link_to "Floating UI", "https://floating-ui.com/", target: :_blank, class: "link" %>. We've wrapped them in a Stimulus controller so you can easily add them anywhere in your application. See also <%= link_to "Clipboard", clipboard_docs_path %> which uses tooltips.</p>
+<p>Add a <code>data-controller="tooltip" data-tooltip-content="My tooltip"</code> to the element you want to add the tooltip to. You can set options using data attributes without writing any JS.</p>
+
+<%= render "jumpstart/docs/snippet" do %>
+<button class="btn btn-secondary" data-controller="tooltip" data-tooltip-content-value="I'm a tooltip!">Hover over me</button>
+<% end %>
+
+<p>You can also specify the placement of the tooltip with <code>data-tooltip-placement-value="right"</code>.</p>
+
+<%= render "jumpstart/docs/snippet" do %>
+  <button class="btn btn-secondary" data-controller="tooltip" data-tooltip-placement-value="right" data-tooltip-content-value="I'm a tooltip!">Hover over me</button>
+<% end %>

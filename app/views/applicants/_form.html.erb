@@ -1,0 +1,103 @@
+<%= form_with(model: applicant) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+  <div class="form-group">
+    <%= form.label :finance_application_id %>
+    <%= form.text_field :finance_application_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :surname %>
+    <%= form.text_field :surname, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :given_names %>
+    <%= form.text_field :given_names, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :dob %>
+    <%= form.date_field :dob, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :drivers_licence %>
+    <%= form.text_field :drivers_licence, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :licence_state %>
+    <%= form.text_field :licence_state, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :marital_status %>
+    <%= form.text_field :marital_status, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :dependants %>
+    <%= form.number_field :dependants, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address_state %>
+    <%= form.text_field :address_state, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address_postcode %>
+    <%= form.text_field :address_postcode, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :residency_status %>
+    <%= form.text_field :residency_status, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :us_citizen %>
+    <%= form.checkbox :us_citizen, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tin %>
+    <%= form.text_field :tin, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :other_tax_countries %>
+    <%= form.text_field :other_tax_countries, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
+
+    <% if form.object.new_record? %>
+      <%= link_to t("cancel"), applicants_path, class: "btn btn-secondary" %>
+    <% else %>
+      <%= link_to t("cancel"), applicant_path(@applicant), class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+<% end %>

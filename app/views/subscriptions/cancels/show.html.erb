@@ -1,0 +1,22 @@
+<div class="max-w-xl mx-auto mt-12 p-8 bg-white dark:bg-gray-900 rounded-sm shadow-sm">
+  <h3 class="text-gray-700 dark:text-gray-200"><%= t ".title" %></h3>
+
+  <div class="my-8">
+    <%= render partial: "subscriptions/summary", locals: { subscription: @subscription } %>
+  </div>
+
+  <div class="flex-1 mt-2 mb-4 text-gray-700 dark:text-gray-200">
+    <div class="font-bold"><%= t ".description", product: Jumpstart.config.application_name %></div>
+    <div><%= t ".help_html", link: mail_to(Jumpstart.config.support_email, t(".contact_us"), subject: t(".subject", product: Jumpstart.config.application_name), class: "underline text-primary-600 dark:text-primary-400") %></div>
+    <div class="mt-4"><%= t(".active_until") %></div>
+    <div class="mt-4"><%= t(".resume") %></div>
+  </div>
+
+  <div class="mt-8 flex justify-between items-center">
+    <%= link_to t(".back"), subscriptions_path, class: "btn btn-secondary" %>
+
+    <%= button_to subscription_cancel_path(@subscription), method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: t("are_you_sure") } } do %>
+      <%= button_text t(".button"), disable_with: t(".processing") %>
+    <% end %>
+  </div>
+</div>

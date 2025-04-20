@@ -1,0 +1,29 @@
+[data-notifications-target="notification"] .unread {
+  display: none;
+  flex-shrink: 0;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--bg-primary);
+    border-radius: 9999px;
+  }
+}
+
+/* Highlights unseen notifications with background color */
+[data-notifications-target="notification"]:not([data-seen-at]) {
+  background-color: var(--color-gray-100);
+}
+
+.dark [data-notifications-target="notification"]:not([data-seen-at]) {
+  background: var(--color-gray-800);
+}
+
+/* Highlights unread notifications with blue dot */
+[data-notifications-target="notification"]:not([data-read-at]) {
+  .unread {
+    display: block;
+  }
+}

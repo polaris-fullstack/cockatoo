@@ -1,0 +1,15 @@
+<%= form_with(model: @application, url: declaration_step1_application_path(@application), method: :patch) do |form| %>
+  <%= hidden_field_tag :current_step, :declaration %>
+  <%= render "error_messages", resource: form.object %>
+  <div>
+    <h2 class="font-semibold mb-4">Declaration</h2>
+    <div class="form-group">
+      <%= form.label :declaration %>
+      <%= form.text_area :declaration, class: "form-control", required: true %>
+    </div>
+  </div>
+  <div class="flex justify-between mt-6">
+    <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5" %>
+    <button type="submit" name="next" value="true" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2">Submit</button>
+  </div>
+<% end %>

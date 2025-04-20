@@ -1,0 +1,11 @@
+<nav class="w-64 h-full bg-white border-r px-4 py-6">
+  <ul class="space-y-4">
+    <li><%= link_to 'Loan Details', loan_details_step1_application_path(@application), class: sidebar_link_class(:loan_details) %></li>
+    <li><%= link_to 'Applicants', applicants_step1_application_path(@application), class: sidebar_link_class(:applicants) %></li>
+    <li><%= link_to 'Properties', properties_step1_application_path(@application), class: sidebar_link_class(:properties) %></li>
+    <li><%= link_to 'Assets', assets_step1_application_path(@application), class: sidebar_link_class(:assets) %></li>
+    <li><%= link_to 'Liabilities', liabilities_step1_application_path(@application), class: sidebar_link_class(:liabilities) %></li>
+    <li><%= link_to 'Documents', documents_step1_application_path(@application), class: sidebar_link_class(:documents) %></li>
+    <li><%= link_to 'Declaration', declaration_step1_application_path(@application), class: sidebar_link_class(:declaration) %></li>
+  </ul>
+</nav>

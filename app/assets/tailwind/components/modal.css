@@ -1,0 +1,136 @@
+/* Prevent scrolling while dialog is open */
+body:has(dialog[open]) {
+  filter: blur(4px);
+  overflow: hidden;
+}
+
+/* Slideover animations */
+dialog.slideover[open] {
+  animation: slide-in-from-right 200ms forwards ease-in-out;
+}
+
+dialog.slideover[closing] {
+  pointer-events: none;
+  animation: slide-out-to-right 200ms forwards ease-in-out;
+}
+
+dialog.modal {
+  border-radius: 8px;
+  margin: auto;
+  max-height: 100vh;
+  width: 100%;
+
+  &[open] {
+    animation: fadeIn 200ms forwards;
+  }
+
+  &[closing] {
+    animation: fadeOut 200ms forwards;
+  }
+
+  &.modal::backdrop {
+    background: var(--base-bg-backdrop);
+    opacity: 0.5;
+  }
+
+  &.modal-sm {
+    max-width: 384px;
+  }
+
+  &.modal-md {
+    max-width: 448px;
+  }
+
+  &.modal-lg {
+    max-width: 512px;
+  }
+
+  &.modal-full {
+    border-radius: 0px;
+    max-height: 100%;
+    height: 100%;
+    max-width: 100%;
+    margin: 0px;
+  }
+
+  .modal-card {
+    position: relative;
+    padding: 24px;
+    background: var(--base-bg-low);
+
+    &.full {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      div:first-of-type {
+        align-items: flex-start;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        width: 66.666667%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      div:last-child {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 16px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 8px;
+        width: 66.666667%;
+      }
+    }
+
+
+    button[type="button"] {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      border-radius: 8px;
+      color: var(--base-icon);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+
+      &:hover {
+        cursor: pointer;
+        color: var(--base-text-secondary);
+      }
+
+      &:disabled {
+        pointer-events: none;
+      }
+    }
+
+    .modal-title {
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--base-text);
+    }
+
+    .modal-body {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      margin-bottom: 8px;
+      color: var(--base-text);
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      gap: 8px;
+    }
+  }
+}

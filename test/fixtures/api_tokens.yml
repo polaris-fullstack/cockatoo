@@ -1,0 +1,15 @@
+one:
+  user: one
+  token: token1
+  metadata:
+  transient: false
+  last_used_at: 2019-08-01 11:08:34
+  expires_at: 2019-08-01 11:08:34
+
+two:
+  user: two
+  token: token2
+  metadata:
+  transient: false
+  last_used_at: 2019-08-01 11:08:34
+  expires_at: 2019-08-01 11:08:34

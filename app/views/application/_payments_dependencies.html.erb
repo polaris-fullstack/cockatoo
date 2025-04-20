@@ -1,0 +1,15 @@
+<%= javascript_include_tag "https://js.stripe.com/v3/" if Jumpstart.config.stripe? %>
+
+<%# https://developer.paypal.com/braintree/docs/guides/paypal/client-side/javascript/v3/ %>
+<%= javascript_include_tag 'https://js.braintreegateway.com/web/dropin/1.20.2/js/dropin.min.js' if Jumpstart.config.braintree? || Jumpstart.config.paypal? %>
+
+<% if Jumpstart.config.paypal? %>
+  <!-- Load PayPal's checkout.js Library. -->
+  <script src="https://www.paypalobjects.com/api/checkout.js" data-version-5 log-level="warn"></script>
+
+  <!-- Load the client component. -->
+  <script src="https://js.braintreegateway.com/web/3.97.3/js/client.min.js"></script>
+
+  <!-- Load the PayPal Checkout component. -->
+  <script src="https://js.braintreegateway.com/web/3.97.3/js/paypal-checkout.min.js"></script>
+<% end %>

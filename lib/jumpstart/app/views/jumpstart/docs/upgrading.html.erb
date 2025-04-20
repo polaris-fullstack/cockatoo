@@ -1,0 +1,48 @@
+<% content_for :title, "Upgrading" %>
+<% content_for :subtitle do %>
+  You can clone Jumpstart Pro from our Git repository and merge updates at any time.
+<% end %>
+
+<%= h2_with_anchor "Using Jumpstart Pro with Git" %>
+
+<p>
+  Git provides an easy way to merge changes from Jumpstart Pro into your application. This is handy when new features or improvements are added to Jumpstart Pro and you'd like to merge them into your application.
+</p>
+
+<%= h4_with_anchor "Clone The Repository" %>
+
+<p>First, you'll need to clone Jumpstart Pro from GitHub when you create your application. We'll call our application <code>my-app</code>, but you should change it to your application name.</p>
+
+<div class="not-prose">
+  <pre class="lang-bash"><code>git clone git@github.com:jumpstart-pro/jumpstart-pro-rails.git my-app
+cd my-app
+git remote rename origin jumpstart-pro</code></pre>
+</div>
+
+<p class="text-sm">This example shows the Rails repository, but you'll want to change this for iOS or Android.</p>
+
+<%= h4_with_anchor "Create Your Git Repository" %>
+
+<p>Now that we have a clone of Jumpstart Pro, we need to create a GitHub repository to host our application.</p>
+
+<p class="flex gap-2">
+  <%= link_to "GitHub", "https://github.com/new", target: :_blank, class: "btn btn-secondary" %>
+  <%= link_to "GitLab", "https://gitlab.com/projects/new", target: :_blank, class: "btn btn-secondary" %>
+  <%= link_to "BitBucket", "https://bitbucket.org/repo/create", target: :_blank, class: "btn btn-secondary" %>
+</p>
+
+<p>We can then add a new remote called <code>origin</code>, point it to our new repository and push the code up to it.</p>
+
+<div class="not-prose">
+  <pre class="lang-bash"><code>git remote add origin git@github.com:your-account/your-new-repo.git
+git push -u origin main</code></pre>
+</div>
+
+<%= h4_with_anchor "Merging updates from Jumpstart Pro" %>
+
+<p>We can then use git to fetch and merge updates into your application.</p>
+
+<div class="not-prose">
+  <pre class="lang-bash"><code>git fetch jumpstart-pro
+git merge jumpstart-pro/main</code></pre>
+</div>

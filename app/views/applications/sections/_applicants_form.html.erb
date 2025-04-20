@@ -1,0 +1,37 @@
+<%= form_with(model: @application, url: applicants_step1_application_path(@application), method: :patch) do |form| %>
+  <%= hidden_field_tag :current_step, :applicants %>
+  <%= render "error_messages", resource: form.object %>
+  <div>
+    <h2 class="font-semibold mb-4">Applicants</h2>
+    <div data-nested-container="applicant">
+      <%= form.fields_for :applicants do |applicant_form| %>
+        <%= render "applicants/form_fields", f: applicant_form %>
+        <!-- Nested Employment Histories for this applicant -->
+        <div class="ml-4 mt-2">
+          <label class="block font-semibold mb-2">Employment History</label>
+          <div data-nested-container="employment-history-<%= applicant_form.index %>">
+            <%= applicant_form.fields_for :employment_histories do |employment_form| %>
+              <%= render "employment_histories/form_fields", f: employment_form %>
+            <% end %>
+          </div>
+          <button type="button" class="btn btn-secondary mt-2">Add Previous Employment</button>
+        </div>
+        <!-- Nested Documents for this applicant -->
+        <div class="ml-4 mt-2">
+          <label class="block font-semibold mb-2">Documents</label>
+          <div data-nested-container="document-<%= applicant_form.index %>">
+            <%= applicant_form.fields_for :documents do |doc_form| %>
+              <%= render "documents/form_fields", f: doc_form %>
+            <% end %>
+          </div>
+          <button type="button" class="btn btn-secondary mt-2">Add Another Document</button>
+        </div>
+      <% end %>
+    </div>
+    <button type="button" class="btn btn-secondary mt-2">Add Another Applicant</button>
+  </div>
+  <div class="flex justify-between mt-6">
+    <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5" %>
+    <button type="submit" name="next" value="true" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2">Next</button>
+  </div>
+<% end %>

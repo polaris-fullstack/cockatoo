@@ -1,0 +1,11 @@
+<h4>Social Login with OAuth</h4>
+<p class="mb-4 text-sm text-gray-700 dark:text-gray-300">Allow users to <%= link_to "login with OAuth", authentication_docs_path, target: :_blank %>  accounts. Make sure to add your OAuth credentials to the <%= link_to "Rails credentials", credentials_docs_path, target: :_blank %>.</p>
+
+<section class="space-y-4">
+  <% Jumpstart::Omniauth.all_providers.each do |gem_name, details| %>
+    <div class="form-picker-group toggle">
+      <%= check_box_tag "configuration[omniauth_providers][]", gem_name, Jumpstart::Omniauth.enabled?(gem_name), id: gem_name %>
+      <%= label_tag gem_name, details[:name] %>
+    </div>
+  <% end %>
+</section>

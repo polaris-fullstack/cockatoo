@@ -1,0 +1,128 @@
+<div id="<%= dom_id application %>" class="border-t border-gray-200 dark:border-gray-700">
+  <dl>
+    <!-- Loan Information Section -->
+    <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Loan Purpose</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0"><%= application.purpose || "Not specified" %></dd>
+    </div>
+    
+    <div class="bg-white dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">First Time Home Owner</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.first_time_owner.nil? %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% else %>
+          <span class="<%= application.first_time_owner ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400' %>">
+            <%= application.first_time_owner ? 'Yes' : 'No' %>
+          </span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">FHOG Eligible</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.fhog_eligible.nil? %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% else %>
+          <span class="<%= application.fhog_eligible ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400' %>">
+            <%= application.fhog_eligible ? 'Yes' : 'No' %>
+          </span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <!-- Property Information Section -->
+    <div class="bg-white dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Property Address</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <%= application.property_address || "<span class='text-gray-400 dark:text-gray-500'>Not specified</span>".html_safe %>
+      </dd>
+    </div>
+    
+    <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Property Location</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.property_state.present? || application.property_postcode.present? %>
+          <%= [application.property_state, application.property_postcode].compact.join(" ") %>
+        <% else %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <div class="bg-white dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Purchase Price</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.purchase_price.present? %>
+          <span class="font-medium">$<%= number_with_delimiter(application.purchase_price, delimiter: ',') %></span>
+        <% else %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Dwelling Age</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.dwelling_age.present? %>
+          <%= application.dwelling_age %> years
+        <% else %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <!-- Financial Information Section -->
+    <div class="bg-white dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Assets</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.assets.present? %>
+          <span class="font-medium">$<%= number_with_delimiter(application.assets, delimiter: ',') %></span>
+        <% else %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Liabilities</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.liabilities.present? %>
+          <span class="font-medium">$<%= number_with_delimiter(application.liabilities, delimiter: ',') %></span>
+        <% else %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <div class="bg-white dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Income</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.income.present? %>
+          <span class="font-medium">$<%= number_with_delimiter(application.income, delimiter: ',') %></span>
+        <% else %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <div class="bg-gray-50 dark:bg-gray-700/50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Expenses</dt>
+      <dd class="mt-1 text-sm text-gray-900 dark:text-white sm:col-span-2 sm:mt-0">
+        <% if application.expenses.present? %>
+          <span class="font-medium">$<%= number_with_delimiter(application.expenses, delimiter: ',') %></span>
+        <% else %>
+          <span class="text-gray-400 dark:text-gray-500">Not specified</span>
+        <% end %>
+      </dd>
+    </div>
+    
+    <div class="bg-white dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-gray-500 dark:text-gray-300">Declaration</dt>
+    <%= application.declaration %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this application", application, class: "btn btn-secondary" %>
+  <% end %>
+</div>

@@ -1,0 +1,79 @@
+# Jumpstart Pro dependencies
+gem "devise", github: "excid3/devise", branch: "sign-in-after-reset-password-proc" # "~> 4.9.0"
+gem "devise-i18n", "~> 1.10"
+gem "inline_svg", "~> 1.6"
+gem "invisible_captcha", "~> 2.0"
+gem "jumpstart", path: "lib/jumpstart"
+gem "local_time", "~> 3.0"
+gem "hotwire_combobox", "~> 0.3"
+gem "madmin", "~> 2.0"
+gem "name_of_person", "~> 1.0"
+gem "nokogiri", ">= 1.12.5" # Security update
+gem "noticed", "~> 2.2"
+gem "pagy", "~> 9.0"
+gem "pay", "~> 9.0"
+gem "prefixed_ids", "~> 1.2"
+gem "pretender", "~> 0.4"
+gem "pundit", "~> 2.1"
+gem "receipts", "~> 2.1"
+gem "rotp", "~> 6.2"
+gem "rqrcode", "~> 2.1"
+gem "ruby-oembed", "~> 0.18.0", require: "oembed"
+gem "tailwindcss-rails", "~> 4.0"
+
+group :development, :test do
+  gem "erb_lint", require: false
+  gem "mailbin", "~> 1.0"
+end
+
+group :development do
+  # A fully configurable and extendable Git hook manager
+  gem "overcommit", require: false
+end
+
+group :test do
+  # Test HTTP requests [https://github.com/bblimke/webmock]
+  gem "webmock"
+end
+
+gem "acts_as_tenant", "~> 1.0" if Jumpstart.config.gems.include?("acts_as_tenant")
+gem "refer", "~> 0.5.0" if Jumpstart.config.gems.include?("refer")
+gem "whenever", "~> 1.0", require: false if Jumpstart.config.gems.include?("whenever")
+
+omniauth_providers = Jumpstart.config.omniauth_providers
+gem "omniauth", "~> 2.1" if omniauth_providers.any?
+gem "omniauth-rails_csrf_protection", "~> 1.0" if omniauth_providers.any?
+gem "omniauth-twitter", github: "excid3/omniauth-twitter" if omniauth_providers.include?("twitter")
+gem "omniauth-facebook", github: "excid3/omniauth-facebook" if omniauth_providers.include?("facebook")
+gem "omniauth-github" if omniauth_providers.include?("github")
+gem "omniauth-google-oauth2" if omniauth_providers.include?("google-oauth2")
+gem "omniauth-microsoft_graph" if omniauth_providers.include?("microsoft_graph")
+
+# Integrations
+gem "airbrake" if Jumpstart.config.airbrake?
+gem "appsignal" if Jumpstart.config.appsignal?
+gem "bugsnag" if Jumpstart.config.bugsnag?
+gem "honeybadger" if Jumpstart.config.honeybadger?
+gem "intercom-rails" if Jumpstart.config.intercom?
+gem "rollbar" if Jumpstart.config.rollbar?
+gem "scout_apm" if Jumpstart.config.scout?
+gem "sentry-rails" if Jumpstart.config.sentry?
+gem "sentry-sidekiq" if Jumpstart.config.sentry? && Jumpstart.config.background_job_processor == "sidekiq"
+gem "skylight" if Jumpstart.config.skylight?
+
+# Background jobs
+gem "sidekiq" if Jumpstart.config.background_job_processor == "sidekiq"
+
+if Jumpstart.config.background_job_processor == "solid_queue"
+  gem "mission_control-jobs"
+end
+
+# Payment processors
+gem "stripe", "~> 13.0" if Jumpstart.config.stripe?
+gem "lemonsqueezy", "~> 1.0" if Jumpstart.config.lemon_squeezy?
+gem "paddle", "~> 2.1" if Jumpstart.config.paddle_billing? || Jumpstart.config.paddle_classic?
+gem "braintree", "~> 4.20" if Jumpstart.config.braintree? || Jumpstart.config.paypal?
+
+# Notifications
+gem "apnotic" if Jumpstart.config.apns?
+gem "googleauth" if Jumpstart.config.fcm?

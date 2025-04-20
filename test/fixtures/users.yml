@@ -1,0 +1,98 @@
+one:
+  email: one@example.com
+  first_name: User
+  last_name: One
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>
+
+two:
+  email: two@example.com
+  first_name: User
+  last_name: Two
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>
+
+admin:
+  email: admin@example.com
+  first_name: Admin
+  last_name: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>
+  admin: true
+
+invited:
+  email: invited@example.com
+  first_name: Invited
+  last_name: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>
+
+noaccount:
+  email: noaccount@example.com
+  first_name: No Account
+  last_name: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>
+
+twofactor:
+  email: twofactor@example.com
+  first_name: TwoFactor
+  last_name: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>
+  otp_required_for_login: true
+  otp_secret: NJZNMRJFS6XBRMZ4NDEDAUIYIVTBJXOM
+  otp_backup_codes:
+    - "0000000001"
+    - "0000000002"
+    - "0000000003"
+    - "0000000004"
+    - "0000000005"
+
+user_without_billing_address:
+  email: noaddress@example.com
+  first_name: User
+  last_name: NoAddress
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>
+
+fake_processor:
+  email: fake@example.com
+  first_name: Fake
+  last_name: Processor
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>
+
+subscribed:
+  email: subscribed@example.com
+  first_name: Subscribed
+  last_name: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "Central Time (US & Canada)"
+  confirmed_at: <%= Time.current %>

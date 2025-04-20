@@ -1,0 +1,33 @@
+{
+  "name": "cockatoo-portal",
+  "version": "1.0.0",
+  "description": "Welcome! To get started, clone the repository and push it to a new repository.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cockatoo-Financial-Pty-Ltd/cockatoo-portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cockatoo-Financial-Pty-Ltd/cockatoo-portal/issues"
+  },
+  "homepage": "https://github.com/Cockatoo-Financial-Pty-Ltd/cockatoo-portal#readme",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "flowbite": "^3.1.2",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4"
+  }
+}

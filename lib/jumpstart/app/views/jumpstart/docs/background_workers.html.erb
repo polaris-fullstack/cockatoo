@@ -1,0 +1,26 @@
+<% content_for :title, "Background Workers" %>
+<% content_for :subtitle do %>
+  Jumpstart Pro makes adding background workers easy.
+<% end %>
+
+<%= h2_with_anchor "Choosing Your Background Workers" %>
+
+<p>The Jumpstart Pro config admin lets you select your preferred tool for processing background jobs.</p>
+
+<ul>
+  <li>Bring your own - Jumpstart Pro will let you configure your own ActiveJob queue adapter</li>
+  <li>Async - Runs jobs with an in-process thread pool. Should not be used in production.</li>
+  <li><a href="https://github.com/rails/solid_queue" target="_blank">Solid Queue</a> - Stores jobs in SQL database</li>
+  <li><a href="https://github.com/sidekiq/sidekiq" target="_blank">Sidekiq</a> - requires Redis</li>
+</ul>
+
+<%= h2_with_anchor "Active Job" %>
+
+<p>
+  After selecting your background worker of choice and saving your config, Jumpstart Pro will add the gem and configure ActiveJob to use it as the default for all environments.
+</p>
+
+<%= h2_with_anchor "Sidekiq" %>
+
+<p>If Sidekiq is enabled, we automatically enable the Sidekiq Web UI, restrict it to only admin users and add links to it in the navigation.</p>
+<p>Sidekiq requires Redis to operate. Ensure <a href="https://redis.io/docs/install/install-redis/" target="_blank" class="link">Redis is installed</a> and properly configured in your setup before enabling Sidekiq.</p>

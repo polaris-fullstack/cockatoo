@@ -1,0 +1,17 @@
+<%= content_for :title, "Applicants ##{@applicant.id}" %>
+<%= turbo_stream_from @applicant %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Applicants", applicants_path, class: "text-black dark:text-white" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      Applicant #<%= @applicant.id %>
+    </h1>
+    <%= link_to t("edit"), edit_applicant_path(@applicant), class: "btn btn-secondary" %>
+  </div>
+
+  <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+    <%= render @applicant %>
+  </div>
+</div>

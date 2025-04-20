@@ -1,0 +1,133 @@
+<div data-controller="property-fields">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="form-group">
+      <%= f.label :property_type, 'Property Type' %>
+      <%= f.select :property_type, ['House', 'Apartment/Unit', 'Townhouse', 'Villa', 'Land Only', 'Off-the-plan', 'Dual Occupancy', 'Commercial', 'Rural', 'Other'], {prompt: 'Select property type'}, class: "form-control", data: { action: "property-fields#update" } %>
+    </div>
+    <div class="form-group">
+      <%= f.label :occupancy_type, 'Occupancy Type' %>
+      <%= f.select :occupancy_type, ['Owner Occupied', 'Investment', 'Holiday Home', 'Other'], {prompt: 'Select occupancy type'}, class: "form-control", data: { action: "property-fields#update" } %>
+    </div>
+    <div class="form-group" data-property-fields-target="titleReference">
+      <%= f.label :title_reference, 'Title Reference' %>
+      <%= f.text_field :title_reference, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="lotNumber">
+      <%= f.label :lot_number, 'Lot Number' %>
+      <%= f.text_field :lot_number, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="estimatedCompletionDate">
+      <%= f.label :estimated_completion_date, 'Estimated Completion Date (if off-the-plan)' %>
+      <%= f.date_field :estimated_completion_date, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="constructionType">
+      <%= f.label :construction_type, 'Construction Type' %>
+      <%= f.text_field :construction_type, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="floorArea">
+      <%= f.label :floor_area, 'Floor Area (sqm)' %>
+      <%= f.text_field :floor_area, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="valuationDate">
+      <%= f.label :valuation_date, 'Valuation Date' %>
+      <%= f.date_field :valuation_date, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="tenanted">
+      <%= f.label :tenanted, 'Is the property tenanted?' %>
+      <%= f.select :tenanted, [['Yes', true], ['No', false]], {prompt: 'Select'}, class: "form-control", data: { action: "property-fields#update" } %>
+    </div>
+    <div class="form-group" data-property-fields-target="leaseExpiryDate">
+      <%= f.label :lease_expiry_date, 'Lease Expiry Date (if tenanted)' %>
+      <%= f.date_field :lease_expiry_date, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="councilRates">
+      <%= f.label :council_rates, 'Council Rates (annual)' %>
+      <%= f.number_field :council_rates, class: "form-control", step: 0.01 %>
+    </div>
+    <div class="form-group" data-property-fields-target="strataFees">
+      <%= f.label :strata_fees, 'Strata Fees (annual, if applicable)' %>
+      <%= f.number_field :strata_fees, class: "form-control", step: 0.01 %>
+    </div>
+    <div class="form-group" data-property-fields-target="insuranceDetails">
+      <%= f.label :insurance_details, 'Insurance Details' %>
+      <%= f.text_field :insurance_details, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="energyRating">
+      <%= f.label :energy_rating, 'Energy Rating' %>
+      <%= f.text_field :energy_rating, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address, 'Property Address' %>
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :property_state, 'State' %>
+      <%= f.text_field :property_state, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :property_postcode, 'Postcode' %>
+      <%= f.text_field :property_postcode, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :purchase_price, 'Purchase Price / Estimated Value' %>
+      <%= f.number_field :purchase_price, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :dwelling_age, 'Year Built / Age' %>
+      <%= f.text_field :dwelling_age, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :bedrooms, 'Bedrooms' %>
+      <%= f.number_field :bedrooms, class: "form-control", min: 0 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :bathrooms, 'Bathrooms' %>
+      <%= f.number_field :bathrooms, class: "form-control", min: 0 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :car_spaces, 'Car Spaces' %>
+      <%= f.number_field :car_spaces, class: "form-control", min: 0 %>
+    </div>
+    <div class="form-group" data-property-fields-target="newlyBuilt">
+      <%= f.label :newly_built, 'Is it newly built?' %>
+      <%= f.select :newly_built, [['Yes', true], ['No', false]], {prompt: 'Select'}, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="offThePlan">
+      <%= f.label :off_the_plan, 'Is it off-the-plan?' %>
+      <%= f.select :off_the_plan, [['Yes', true], ['No', false]], {prompt: 'Select'}, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="strataTitle">
+      <%= f.label :strata_title, 'Is it a strata title?' %>
+      <%= f.select :strata_title, [['Yes', true], ['No', false]], {prompt: 'Select'}, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="landSize">
+      <%= f.label :land_size, 'Land Size (sqm or ha)' %>
+      <%= f.text_field :land_size, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="rentalIncome">
+      <%= f.label :rental_income, 'Rental Income (if investment)' %>
+      <%= f.number_field :rental_income, class: "form-control", step: 0.01 %>
+    </div>
+    <div class="form-group" data-property-fields-target="outstandingLoan">
+      <%= f.label :outstanding_loan_amount, 'Outstanding Loan Amount (if refinancing)' %>
+      <%= f.number_field :outstanding_loan_amount, class: "form-control", step: 0.01 %>
+    </div>
+    <div class="form-group" data-property-fields-target="currentLender">
+      <%= f.label :current_lender, 'Current Lender (if refinancing)' %>
+      <%= f.text_field :current_lender, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="zoning">
+      <%= f.label :zoning, 'Zoning / Council Details (if land/commercial/rural)' %>
+      <%= f.text_field :zoning, class: "form-control" %>
+    </div>
+    <div class="form-group" data-property-fields-target="propertyUsage">
+      <%= f.label :property_usage, 'Usage (if commercial/rural)' %>
+      <%= f.text_field :property_usage, class: "form-control" %>
+    </div>
+    <div class="form-group md:col-span-2">
+      <%= f.label :property_notes, 'Other Notes or Details' %>
+      <%= f.text_area :property_notes, class: "form-control" %>
+    </div>
+  </div>
+  <button type="button" class="btn btn-danger mt-2" data-action="click->finance-application-form#removeNested" data-target="property">Remove Property</button>
+</div>

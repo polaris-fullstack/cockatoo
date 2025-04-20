@@ -1,0 +1,6 @@
+<%# locals: (client_secret:) %>
+<%= tag.div data: {
+  controller: "stripe--embedded-checkout",
+  stripe__embedded_checkout_public_key_value: Pay::Stripe.public_key,
+  stripe__embedded_checkout_client_secret_value: client_secret
+} %>

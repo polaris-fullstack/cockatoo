@@ -1,0 +1,44 @@
+<% content_for :title, "Welcome To Jumpstart Pro Rails" %>
+<% content_for :subtitle do %>
+  We're excited to see what you build with Jumpstart Pro and Ruby on Rails. This documentation is everything you need to know to start building products with Jumpstart Pro.
+<% end %>
+
+<div class="space-y-4">
+  <h3>How to get started with Jumpstart Pro Rails</h3>
+
+  <p>
+    First of all, thanks for using Jumpstart Pro! We want to make Jumpstart Pro the easiest way for you to launch a business with Ruby on Rails.
+  </p>
+
+  <p>
+    Below are some quick links to the documentation for some of the core features and functionality of Jumpstart Pro.
+  </p>
+
+  <p>
+    <%= link_to "Accounts & Teams", accounts_docs_path, class: "no-underline" %>
+    - Learn about Jumpstart Pro's Accounts feature which enables user-specific or multi-user resource scoping
+  </p>
+
+  <p>
+    <%= link_to "Billing", billing_docs_path, class: "no-underline" %>
+    - Explore Jumpstart Pro's flexible billing options, supporting multiple payment processors, subscriptions, and one-time payments.
+  </p>
+
+  <p>
+    <%= link_to "JavaScript", javascript_docs_path, class: "no-underline" %>
+    - Dive into Jumpstart Pro's JavaScript handling, featuring Stimulus.js, esbuild for efficient bundling, and automatic page reloads for a streamlined development process.
+  </p>
+
+  <p>
+    <%= link_to "Roles", roles_docs_path, class: "no-underline" %>
+    - Discover Jumpstart Pro's Account Roles, allowing role assignment per account with customizable roles, facilitating access control to account functionalities.
+  </p>
+
+  <p>
+    <%= link_to "Tailwind CSS", tailwind_docs_path, class: "no-underline" %>
+    - Adapt Jumpstart Pro's UI components and Tailwind CSS configuration as a starting point for your template, with automatic style purging and monitoring for CSS classes in Rails helpers, views, and JavaScript files.
+  </p>
+
+  <h3>Next</h3>
+  <p><%= link_to "Install Jumpstart Pro", installation_docs_path, class: "link" %></p>
+</div>

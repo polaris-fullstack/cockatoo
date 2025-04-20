@@ -1,0 +1,47 @@
+@import "flowbite";
+@import "tailwindcss";
+
+@plugin "@tailwindcss/aspect-ratio";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@variant dark (&:where(.dark, .dark *));
+@variant hotwire-native (html.hotwire-native &);
+@variant not-hotwire-native (html:not(.hotwire-native) &);
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-primary: var(--bg-primary);
+}
+
+@import "./themes/dark.css" layer(theme);
+@import "./themes/juicy.css" layer(theme);
+@import "./themes/light.css" layer(theme);
+@import "./themes/jumpstart-dark.css" layer(theme);
+@import "./themes/jumpstart.css" layer(theme);
+
+@import "./components/base.css" layer(components);
+@import "./components/actiontext.css" layer(components);
+@import "./components/alert.css" layer(components);
+@import "./components/animation.css" layer(components);
+@import "./components/announcements.css" layer(components);
+@import "./components/avatars.css" layer(components);
+@import "./components/buttons.css" layer(components);
+@import "./components/cards.css" layer(components);
+@import "./components/direct_uploads.css" layer(components);
+@import "./components/docs.css" layer(components);
+@import "./components/forms.css" layer(components);
+@import "./components/hotwire_native.css" layer(components);
+@import "./components/iframe.css" layer(components);
+@import "./components/modal.css" layer(components);
+@import "./components/nav.css" layer(components);
+@import "./components/notifications.css" layer(components);
+@import "./components/pagination.css" layer(components);
+@import "./components/pills.css" layer(components);
+@import "./components/tabs.css" layer(components);
+@import "./components/toasts.css" layer(components);
+@import "./components/tooltips.css" layer(components);
+@import "./components/top_nav.css" layer(components);
+@import "./components/typography.css" layer(components);
+@import "./components/wells.css" layer(components);
+@import "./components/braintree.css" layer(components);

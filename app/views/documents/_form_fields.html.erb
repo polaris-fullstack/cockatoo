@@ -1,0 +1,45 @@
+<div class="border rounded p-4 mb-4 bg-gray-50">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <%= f.label :document_type, 'Document Type', class: "block text-gray-700 mb-2" %>
+      <%= f.select :document_type, [
+        'Proof of Identity',
+        'Proof of Income',
+        'Bank Statements',
+        'Proof of Assets',
+        'Proof of Liabilities',
+        'Purchase Contract',
+        'Rates Notice',
+        'Rental Income Evidence',
+        'Visa',
+        'Other Supporting Document'
+      ], { prompt: 'Select document type' }, class: "w-full border rounded px-3 py-2" %>
+    </div>
+    <div>
+      <%= f.label :file, 'Upload File', class: "block text-gray-700 mb-2" %>
+      <%= f.file_field :file, class: "w-full border rounded px-3 py-2", direct_upload: true %>
+      <% if f.object && f.object.file && f.object.file.respond_to?(:attached?) && f.object.file.attached? %>
+        <div class="mt-2">
+          <% if f.object.file.image? %>
+            <%= image_tag f.object.file.variant(resize_to_limit: [120, 120]), alt: f.object.file.filename, class: "rounded shadow border" %>
+          <% elsif f.object.file.content_type == "application/pdf" %>
+            <div class="flex items-center space-x-2">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+              <span><%= f.object.file.filename %></span>
+              <%= link_to 'View', url_for(f.object.file), target: '_blank', class: 'text-blue-600 underline' %>
+            </div>
+            <!-- Optionally embed PDF preview -->
+            <iframe src="<%= url_for(f.object.file) %>" width="100%" height="200" class="mt-2 border rounded"></iframe>
+          <% else %>
+            <div class="flex items-center space-x-2">
+              <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+              <span><%= f.object.file.filename %></span>
+              <%= link_to 'Download', url_for(f.object.file), target: '_blank', class: 'text-blue-600 underline' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <button type="button" class="btn btn-danger mt-2" data-action="click->finance-application-form#removeNested" data-target="document">Remove Document</button>
+</div>

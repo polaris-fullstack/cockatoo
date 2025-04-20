@@ -1,0 +1,189 @@
+.alert,
+.banner {
+  background: var(--base-bg-base);
+  color: var(--base-text-secondary);
+  padding: 16px;
+  box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+
+  svg {
+    height: 20px;
+    width: 20px;
+    color: var(--base-icon);
+    flex-shrink: 0;
+  }
+
+  h4 a, p a {
+    display: inline;
+    margin-right: 0px;
+  }
+
+  p {
+    font-weight: 400;
+    color: var(--base-text-secondary);
+  }
+}
+
+.alert {
+  font-weight: 600;
+  border-radius: 4px;
+  gap: 16px;
+
+  svg {
+    align-self: start;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+
+  a {
+    color: var(--text-primary);
+    display: inline-block;
+    font-weight: 600;
+    margin-top: 16px;
+    margin-right: 24px;
+  }
+
+  li {
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+
+  &.alert-info {
+    background: var(--bg-info-secondary);
+    color: var(--text-on-info-secondary);
+
+    svg {
+      color: var(--icon-on-info-secondary);
+    }
+
+    a,
+    li {
+      color: var(--text-on-info-secondary);
+    }
+  }
+
+  &.alert-success {
+    background: var(--bg-success-secondary);
+    color: var(--text-on-success-secondary);
+
+    svg {
+      color: var(--icon-on-success-secondary);
+    }
+
+    a,
+    li {
+      color: var(--text-on-success-secondary);
+    }
+  }
+
+  &.alert-danger,
+  &.alert-error {
+    background: var(--bg-danger-secondary);
+    color: var(--text-on-danger-secondary);
+
+
+    svg {
+      color: var(--icon-on-danger-secondary);
+    }
+
+    a,
+    li {
+      color: var(--text-on-danger-secondary);
+    }
+  }
+
+  &.alert-warning {
+    background: var(--bg-warning-secondary);
+    color: var(--text-on-warning-secondary);
+
+    svg {
+      color: var(--icon-on-warning-secondary);
+    }
+
+    a,
+    li {
+      color: var(--text-on-warning-secondary);
+    }
+  }
+}
+
+.banner {
+  justify-content: center;
+  gap: 8px;
+
+  &.banner-info {
+    background: var(--bg-info-secondary);
+    color: var(--text-on-info-secondary);
+
+    p {
+      color: var(--text-on-info-secondary);
+    }
+  }
+
+  &.banner-success {
+    background: var(--bg-success-secondary);
+    color: var(--text-on-success-secondary);
+
+    p {
+      color: var(--text-on-success-secondary);
+    }
+  }
+
+  &.banner-danger,
+  &.banner-error {
+    background: var(--bg-danger-secondary);
+    color: var(--text-on-danger-secondary);
+
+    p {
+      color: var(--text-on-danger-secondary);
+    }
+  }
+
+  &.banner-warning {
+    background: var(--bg-warning-secondary);
+    color: var(--text-on-warning-secondary);
+
+    p {
+      color: var(--text-on-warning-secondary);
+    }
+  }
+
+  &.banner-impersonate {
+    background: var(--bg-danger-hover);
+    color: var(--text-on-danger);
+
+    a {
+      color: var(--text-on-danger);
+    }
+
+    > * + * {
+      margin-left: 8px;
+    }
+  }
+}
+
+.icon-alert {
+  fill: var(--icon-on-warning-secondary);
+}
+
+.icon-danger,
+.icon-error {
+  fill: var(--icon-on-danger-secondary);
+}
+
+.icon-notice {
+  fill: var(--icon-on-info-secondary);
+}
+
+.icon-success {
+  fill: var(--icon-on-success-secondary);
+}
+
+.icon-default {
+  fill: var(--base-icon);
+}

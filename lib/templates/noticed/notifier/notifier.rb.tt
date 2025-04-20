@@ -1,0 +1,33 @@
+# To deliver this notification:
+#
+# <%= class_name %>.with(post: @post).deliver(current_user)
+
+class <%= class_name %>Notifier < ApplicationNotifier
+  # Add your delivery methods, for example:
+  #
+  # deliver_by :email do |config|
+  #   config.mailer = "UserMailer"
+  #   config.method = "new_post"
+  # end
+
+  deliver_by :action_cable do |config|
+    config.message= ->{ to_websocket }
+  end
+
+  # Add required params
+  #
+  # required_params :post
+
+  # Define helper methods to make rendering easier. These can be on the Notifier or the Notification inside `notification_methods`.
+  #
+  # `message` and `url` are used for rendering in the navbar
+  def message
+    t("hello")
+  end
+
+  def url
+    # You can use any URL helpers here such as:
+    # post_path(params[:post])
+    root_path
+  end
+end

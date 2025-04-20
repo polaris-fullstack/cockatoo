@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="docs-layout <%= class_names("h-full antialiased", "dark": current_user&.dark_theme?) %>" lang="<%= I18n.locale %>">
+  <head>
+    <%= render "head" %>
+
+    <script>
+      document.addEventListener("turbo:load", function() {
+        const themeSelector = document.querySelector('#theme-select');
+        const currentTheme = ['jumpstart', 'dark', 'juicy'].find(cls => document.documentElement.classList.contains(cls)) || null;
+
+        for (const option of themeSelector.options) {
+          option.selected = (option.value === currentTheme) || (option.value === 'light' && currentTheme === null);
+        }
+
+        themeSelector.addEventListener('change', function() {
+          document.documentElement.classList.remove('jumpstart', 'dark', 'juicy');
+          document.documentElement.classList.add(this.value);
+        });
+      });
+    </script>
+  </head>
+
+  <body class="docs-body">
+    <%= render partial: "flash" %>
+    <%= render partial: "jumpstart/docs/top_nav" %>
+
+    <section class="docs-container">
+      <%= render partial: "jumpstart/docs/side_nav" %>
+
+      <main class="docs-main">
+        <header class="docs-header">
+          <%= tag.h1 yield(:title) %>
+          <%= tag.p yield(:subtitle) if content_for(:subtitle) %>
+        </header>
+
+        <section class="docs-content">
+          <%= yield %>
+        </section>
+      </main>
+    </section>
+  </body>
+</html>

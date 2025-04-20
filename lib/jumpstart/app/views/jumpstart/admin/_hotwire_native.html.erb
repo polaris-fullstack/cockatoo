@@ -1,0 +1,39 @@
+<h4>Hotwire Native Integration</h4>
+<p class="text-sm text-gray-600 dark:text-gray-300/75">
+  Configuration for Hotwire Native mobile apps. See <%= link_to "Jumpstart Pro iOS", "https://jumpstartrails.com/ios", target: :_blank %> and <%= link_to "Jumpstart Pro Android", "https://jumpstartrails.com/android", target: :_blank %>.
+</p>
+
+<h5 class="mt-8">Apple Push Notifications</h5>
+
+<section class="space-y-4">
+  <p class="text-sm text-gray-600 dark:text-gray-300/75">
+    To send native push notifications to iOS devices, you'll need to use the Apple Push Notification Service. Enabling this adds the Apnotic dependency for Noticed.
+  </p>
+
+  <div class="form-picker-group toggle">
+    <%= f.check_box :apns, value: true, checked: Jumpstart.config.apns? %>
+    <div>
+      <%= f.label :apns, "Apple Notifications" %>
+      <p>
+        Don't forget to follow the <%= link_to "iOS documentation in Noticed", "https://github.com/excid3/noticed/blob/master/docs/delivery_methods/ios.md", target: :_blank %> to configure your credentials.
+      </p>
+    </div>
+  </div>
+</section>
+
+<h5 class="mt-8">Android Notifications</h5>
+
+<section class="space-y-4">
+<p class="text-sm text-gray-600 dark:text-gray-300/75">
+  To send native push notifications to Android devices, you'll need to use Firebase Cloud Messaging. Enabling this adds the GoogleAuth dependency for Noticed.
+</p>
+
+<div class="form-picker-group toggle">
+  <%= f.check_box :fcm, value: true, checked: Jumpstart.config.fcm? %>
+  <div>
+    <%= f.label :fcm, "Android Notifications" %>
+    <p>
+      Don't forget to follow the <%= link_to "FCM documentation in Noticed", "https://github.com/excid3/noticed/blob/master/docs/delivery_methods/fcm.md", target: :_blank %> to configure your credentials.
+    </p>
+  </div>
+</div>

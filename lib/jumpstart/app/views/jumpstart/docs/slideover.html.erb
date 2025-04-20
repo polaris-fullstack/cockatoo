@@ -1,0 +1,15 @@
+<% content_for :title, "Slideover" %>
+
+<%= h2_with_anchor "Overview" %>
+
+<p class="mb-4">Slideovers are commonly used for contextual modals or navigation. Slideovers are implemented using the Stimulus <code>slideover_controller</code>.</p>
+
+<%= render "jumpstart/docs/snippet" do %>
+<%= render SlideoverComponent.new do |component| %>
+  <button class="btn btn-secondary" data-action="slideover#show:prevent">Open Slideover</button>
+
+  <% component.capture_for :panel do %>
+    <h4 class="mt-0">This is the panel content.</h4>
+  <% end %>
+<% end %>
+<% end %>

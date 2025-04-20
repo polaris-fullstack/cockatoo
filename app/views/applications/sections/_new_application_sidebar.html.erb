@@ -1,0 +1,12 @@
+<nav class="w-64 h-full bg-white dark:bg-gray-800 border-r dark:border-gray-700 px-4 py-6 rounded shadow">
+  <h3 class="font-medium text-gray-700 dark:text-gray-300 mb-4">Application Sections</h3>
+  <ul class="space-y-4">
+    <li><%= link_to 'Loan Details', new_loan_details_applications_path, class: current_step == :loan_details ? "block px-4 py-2 rounded transition-colors duration-150 bg-blue-100 text-blue-700 font-bold" : "block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" %></li>
+    <li><%= link_to 'Applicants', new_applicants_applications_path, class: current_step == :applicants ? "block px-4 py-2 rounded transition-colors duration-150 bg-blue-100 text-blue-700 font-bold" : "block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" %></li>
+    <li><%= link_to 'Properties', new_properties_applications_path, class: current_step == :properties ? "block px-4 py-2 rounded transition-colors duration-150 bg-blue-100 text-blue-700 font-bold" : "block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" %></li>
+    <li><%= link_to 'Assets', new_assets_applications_path, class: current_step == :assets ? "block px-4 py-2 rounded transition-colors duration-150 bg-blue-100 text-blue-700 font-bold" : "block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" %></li>
+    <li><%= link_to 'Liabilities', new_liabilities_applications_path, class: current_step == :liabilities ? "block px-4 py-2 rounded transition-colors duration-150 bg-blue-100 text-blue-700 font-bold" : "block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" %></li>
+    <li><%= link_to 'Documents', new_documents_applications_path, class: current_step == :documents ? "block px-4 py-2 rounded transition-colors duration-150 bg-blue-100 text-blue-700 font-bold" : "block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" %></li>
+    <li><%= link_to 'Declaration', new_declaration_applications_path, class: current_step == :declaration ? "block px-4 py-2 rounded transition-colors duration-150 bg-blue-100 text-blue-700 font-bold" : "block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" %></li>
+  </ul>
+</nav>

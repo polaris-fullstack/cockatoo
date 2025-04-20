@@ -1,0 +1,238 @@
+<% application = application || @application || Loan::FinanceApplication.new %>
+<%= form_with(model: application, url: (application.persisted? ? application_path(application) : create_loan_details_applications_path)) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+  <!-- Hidden Stepper (kept for compatibility with existing JS) -->
+  <ol class="hidden">
+    <li class="flex items-center" data-step="0">Loan Details</li>
+    <li class="flex items-center" data-step="1">Applicants</li>
+    <li class="flex items-center" data-step="2">Property</li>
+    <li class="flex items-center" data-step="3">Assets</li>
+    <li class="flex items-center" data-step="4">Liabilities</li>
+    <li class="flex items-center" data-step="5">Documents</li>
+    <li class="flex items-center" data-step="6">Declaration</li>
+  </ol>
+
+
+  <!-- Step 1: Loan Details -->
+  <div class="form-section" data-section-id="0">
+    <button type="submit" class="font-semibold mb-2">Loan Purpose</button>
+    <div>
+      <div class="form-group">
+        <%= form.label :purpose, "Loan Purpose" %>
+        <%= form.select :purpose, options_for_select([
+          "Purchase of Home",
+          "Refinance Existing Home Loan",
+          "Renovation",
+          "Construction",
+          "Debt Consolidation",
+          "Investment Property",
+          "Equity Release",
+          "Bridging Loan",
+          "Other"
+        ], selected: form.object.purpose), { prompt: "Select loan purpose" }, class: "form-control", data: { purpose_fields_target: "purposeSelect", action: "purpose-fields#toggleFields" } %>
+      </div>
+      <div class="form-group flex items-center space-x-2 mt-2" data-purpose-fields-target="firstTimeOwner">
+        <%= form.check_box :first_time_owner, class: "form-checkbox" %>
+        <%= form.label :first_time_owner, "Are you a first time home owner?", class: "mb-0" %>
+      </div>
+      <div class="form-group flex items-center space-x-2 mt-2" data-purpose-fields-target="fhogEligible">
+        <%= form.check_box :fhog_eligible, class: "form-checkbox" %>
+        <%= form.label :fhog_eligible, "Eligible for First Home Owner Grant (FHOG)?", class: "mb-0" %>
+      </div>
+    </div>
+    <div class="flex justify-between mt-6">
+      <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5" %>
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2" >Next</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Applicants (with nested Employment & Documents) -->
+  <div class="form-section hidden" data-section-id="1">
+    <button type="submit" class="font-semibold mb-2">Applicant(s)</button>
+    <div data-nested-container="applicant" data-prototype='<%= j form.fields_for(:applicants, Applicant.new, child_index: "__INDEX__") { |ff| render("applicants/form_fields", f: ff) } %>'>
+      <%= form.fields_for :applicants do |applicant_form| %>
+        <%= render "applicants/form_fields", f: applicant_form %>
+        <!-- Nested Employment Histories for this applicant -->
+        <div class="ml-4 mt-2">
+          <label class="block font-semibold mb-2">Employment History</label>
+          <div data-nested-container="employment-history-<%= applicant_form.index %>" data-prototype='<%= j applicant_form.fields_for(:employment_histories, EmploymentHistory.new, child_index: "__INDEX__") { |ff| render("employment_histories/form_fields", f: ff) } %>'>
+            <%= applicant_form.fields_for :employment_histories do |employment_form| %>
+              <%= render "employment_histories/form_fields", f: employment_form %>
+            <% end %>
+          </div>
+          <button type="submit" class="btn btn-secondary mt-2" data-action="click->finance-application-form#addNested" data-target-type="employment-history-<%= applicant_form.index %>">Add Previous Employment</button>
+        </div>
+        <!-- Nested Documents for this applicant -->
+        <div class="ml-4 mt-2">
+          <label class="block font-semibold mb-2">Documents</label>
+          <div data-nested-container="document-<%= applicant_form.index %>" data-prototype='<%= j applicant_form.fields_for(:documents, Document.new, child_index: "__INDEX__") { |ff| render("documents/form_fields", f: ff) } %>'>
+            <%= applicant_form.fields_for :documents do |doc_form| %>
+              <%= render "documents/form_fields", f: doc_form %>
+            <% end %>
+          </div>
+          <button type="submit" class="btn btn-secondary mt-2" data-action="click->finance-application-form#addNested" data-target-type="document-<%= applicant_form.index %>">Add Another Document</button>
+        </div>
+      <% end %>
+    </div>
+    <button type="submit" class="btn btn-secondary mt-2" data-action="click->finance-application-form#addNested" data-target-type="applicant">Add Another Applicant</button>
+    <div class="flex justify-between mt-6">
+      <button type="submit" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5" >Back</button>
+      <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2" %>
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2" >Next</button>
+    </div>
+  </div>
+
+  <!-- Step 4: Property -->
+  <div class="form-section hidden" data-section-id="2">
+    <button type="submit" class="font-semibold mb-2" data-action="click->finance-application-form#toggleSection">Property Details</button>
+    <div data-nested-container="property" data-prototype='<%= j form.fields_for(:properties, Property.new, child_index: "__INDEX__") { |ff| render("properties/form_fields", f: ff) } %>'>
+      <%= form.fields_for :properties do |property_form| %>
+        <%= render "properties/form_fields", f: property_form %>
+      <% end %>
+    </div>
+    <button type="submit" class="btn btn-secondary mt-2" data-action="click->finance-application-form#addNested" data-target-type="property">Add Another Property</button>
+    <div class="flex justify-between mt-6">
+      <button type="submit" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5" >Back</button>
+      <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2" %>
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2" >Next</button>
+    </div>
+  </div>
+
+  <!-- Step 5: Assets & Liabilities -->
+  <div class="form-section hidden" data-section-id="3">
+    <button type="submit" class="font-semibold mb-2" data-action="click->finance-application-form#toggleSection">Assets & Liabilities</button>
+    <div>
+      <div class="form-group">
+        <div class="flex items-center space-x-1" data-controller="popover">
+          <%= form.label :assets %>
+          <span data-action="mouseenter->popover#show mouseleave->popover#hide" class="cursor-pointer text-gray-500 hover:text-blue-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </span>
+          <div data-popover-target="content" class="hidden absolute z-10 w-64 p-3 text-sm font-light text-gray-600 bg-white border border-gray-200 rounded-lg shadow-sm">
+            List significant items of value you own, such as savings, investments (stocks, bonds), real estate (excluding the property being financed if applicable), vehicles, superannuation, etc.
+          </div>
+        </div>
+        <%= form.text_area :assets, class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <div class="flex items-center space-x-1" data-controller="popover">
+          <%= form.label :liabilities %>
+          <span data-action="mouseenter->popover#show mouseleave->popover#hide" class="cursor-pointer text-gray-500 hover:text-blue-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </span>
+          <div data-popover-target="content" class="hidden absolute z-10 w-64 p-3 text-sm font-light text-gray-600 bg-white border border-gray-200 rounded-lg shadow-sm">
+            Include all debts such as mortgages, credit card balances, personal loans, car loans, student loans, etc.
+          </div>
+        </div>
+        <%= form.text_area :liabilities, class: "form-control", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 6: Documents -->
+  <div class="form-section hidden" data-section-id="4">
+    <button type="submit" class="font-semibold mb-2">Document Uploads</button>
+    <div class="mb-4">
+      <div class="mb-6">
+        <p class="mb-2 text-gray-700 font-medium">Please upload the following documents for your home loan application:</p>
+        <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+          <li>Proof of Identity (e.g., Passport, Driver’s Licence)</li>
+          <li>Proof of Income (Payslips, employment contract, or tax returns)</li>
+          <li>Bank Statements</li>
+          <li>Proof of Assets</li>
+          <li>Proof of Liabilities</li>
+          <li>Purchase Contract (if buying)</li>
+          <li>Rates Notice (if refinancing)</li>
+          <li>Rental Income Evidence (if applicable)</li>
+          <li>Visa (if not a citizen/permanent resident)</li>
+          <li>Other supporting documents</li>
+        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <%= form.label :identity_document, "Proof of Identity" %>
+            <%= form.file_field :identity_document, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :income_document, "Proof of Income" %>
+            <%= form.file_field :income_document, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :bank_statement, "Bank Statements" %>
+            <%= form.file_field :bank_statement, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :assets_document, "Proof of Assets" %>
+            <%= form.file_field :assets_document, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :liabilities_document, "Proof of Liabilities" %>
+            <%= form.file_field :liabilities_document, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :purchase_contract, "Purchase Contract (if buying)" %>
+            <%= form.file_field :purchase_contract, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :rates_notice, "Rates Notice (if refinancing)" %>
+            <%= form.file_field :rates_notice, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :rental_income, "Rental Income Evidence (if applicable)" %>
+            <%= form.file_field :rental_income, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :visa_document, "Visa (if not citizen/PR)" %>
+            <%= form.file_field :visa_document, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+          <div>
+            <%= form.label :other_documents, "Other Supporting Documents" %>
+            <%= form.file_field :other_documents, multiple: true, direct_upload: true, class: "block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" %>
+          </div>
+        </div>
+      </div>
+      <!-- List of already attached documents (if any) -->
+      <% if application.persisted? && application.documents.attached? %>
+        <ul class="mt-4">
+          <% application.documents.each do |doc| %>
+            <li class="flex items-center justify-between py-2 border-b">
+              <a href="<%= url_for(doc) %>" class="text-blue-600 hover:underline"><%= doc.filename %></a>
+              <%= link_to 'Remove', remove_document_application_path(application, doc.signed_id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-600 hover:underline text-xs ml-2' %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div class="flex justify-between mt-6">
+      <button type="submit" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5" >Back</button>
+      <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2" %>
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2" >Next</button>
+    </div>
+  </div>
+    </div>
+  </div>
+
+  <!-- Tab 7: Declaration -->
+  <div class="form-section hidden" data-section-id="5" data-finance-application-form-target="tab">
+    <button type="submit" class="font-semibold mb-2" data-action="click->finance-application-form#toggleSection">Declaration</button>
+    <div>
+      <div class="form-group">
+        <%= form.label :declaration %>
+        <%= form.check_box :declaration, class: "form-control", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
+    <% if form.object.new_record? %>
+      <%= link_to t("cancel"), applications_path, class: "btn btn-secondary" %>
+    <% else %>
+      <%= link_to t("cancel"), application_path(@application), class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+<% end %>

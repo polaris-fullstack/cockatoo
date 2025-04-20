@@ -1,0 +1,35 @@
+<%= content_for :title, "Properties" %>
+<%= turbo_stream_from :properties %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <h1 class="h3">Properties</h1>
+
+      <div class="text-sm font-medium">
+        <span class="text-gray-500 dark:text-gray-300/75">Sort by:</span>
+        <%= sortable @properties, :address, "Address", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @properties, :status, "Status", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @properties, :purchase_date, "Purchase date", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @properties, :amount, "Amount", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+      </div>
+    </div>
+
+    <%= link_to t("scaffold.new.title", model: "Property"), new_property_path, class: "btn btn-secondary" %>
+  </div>
+
+  <%= tag.div id: ("properties" if first_page?), class: "bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded-md shadow p-6 space-y-8" do %>
+    <%= render partial: "properties/property", collection: @properties, as: :property, cached: true %>
+
+    <div class="hidden only:block text-center">
+      <p class="mb-4 h3">Create your first Property</p>
+      <%= link_to t("scaffold.new.title", model: "Property"), new_property_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <% if @pagy.pages > 1 %>
+    <div class="my-6 text-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
+</div>

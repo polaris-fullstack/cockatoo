@@ -1,0 +1,90 @@
+<aside class="docs-side-nav">
+  <% nav = {
+    "Get Started" => [
+      ["Installation", installation_docs_path],
+      ["Configuration", configuration_docs_path],
+      ["Screencasts", screencasts_docs_path],
+      ["Upgrading", upgrading_docs_path],
+      ["Deploying", deploying_docs_path],
+    ],
+    "Users" => [
+      ["Authentication & OAuth", authentication_docs_path],
+      ["Accounts & Teams", accounts_docs_path],
+      ["Roles", roles_docs_path],
+      ["Multitenancy", multitenancy_docs_path],
+    ],
+    "Payments & Billing" => [
+      ["Overview", billing_docs_path],
+      ["Subscriptions", subscriptions_docs_path],
+      ["One-time Payments", one_time_payments_docs_path],
+    ],
+    "Backend" => [
+      ["Admin", admin_docs_path],
+      ["Announcements", announcements_docs_path],
+      ["Cron & Scheduled Jobs", cron_docs_path],
+      ["Email", email_docs_path],
+      ["Integrations", integrations_docs_path],
+      ["Notifications", notifications_docs_path],
+      ["Scaffolds", scaffolds_docs_path],
+    ],
+    "Rails" => [
+      ["ActionCable", action_cable_docs_path],
+      ["ActionMailbox", action_mailbox_docs_path],
+      ["ActionText", action_text_docs_path],
+      ["ActiveJob", background_workers_docs_path],
+      ["ActiveStorage", active_storage_docs_path],
+      ["ActiveRecord", databases_docs_path],
+      ["Internationalization (I18n)", i18n_docs_path],
+      ["Credentials", credentials_docs_path],
+    ],
+    "API" => [
+      ["API Endpoints", api_docs_path],
+      ["API Clients", api_clients_docs_path],
+    ],
+    "Frontend" => [
+      ["Branding", branding_docs_path],
+      ["Icons", icons_docs_path],
+      ["JavaScript", javascript_docs_path],
+      ["TailwindCSS", tailwind_docs_path],
+      ["Themes", themes_docs_path],
+      ["Typography", typography_docs_path],
+    ],
+    "Components" => [
+      ["Alerts & Notices", alerts_docs_path],
+      ["Buttons", buttons_docs_path],
+      ["Cards", cards_docs_path],
+      ["Clipboard", clipboard_docs_path],
+      ["Forms", forms_docs_path],
+      ["Modals", modals_docs_path],
+      ["Navigation", navigation_docs_path],
+      ["Pagination", pagination_docs_path],
+      ["Pills", pills_docs_path],
+      ["Tabs", tabs_docs_path],
+      ["Tooltips", tooltips_docs_path],
+      ["Slideover", slideover_docs_path],
+      ["Wells", wells_docs_path],
+    ],
+    "Next Steps" => [
+      ["Business", business_docs_path],
+    ],
+    "Hotwire Native" => [
+      ["Existing Apps", existing_apps_docs_path],
+    ]
+  } %>
+
+  <%= select_tag nil, grouped_options_for_select(nav, request.path), class: "lg:hidden", onchange: "Turbo.visit(this.selectedOptions[0].value)" %>
+
+  <div class="hidden lg:block">
+    <% nav.each do |section, links| %>
+      <h5><%= section %></h5>
+
+      <ul class="list-none leading-loose">
+        <% links.each do |title, url| %>
+          <li>
+            <%= nav_link_to title, url, class: "docs-side-nav-link", active_class: "docs-side-nav-link active" %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</aside>

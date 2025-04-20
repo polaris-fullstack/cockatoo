@@ -1,0 +1,16 @@
+<%= content_for :title, t("scaffold.edit.title", model: "Document") %>
+
+<div class="container mx-auto px-4 my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Documents", documents_path, class: "text-black dark:text-white" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      <%= t("scaffold.edit.title", model: "Document") %>
+    </h1>
+    <%= button_to t("delete"), @document, method: :delete, class: "btn btn-secondary", form: { data: { turbo_confirm: t("are_you_sure") } } %>
+  </div>
+
+  <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+    <%= render "form", document: @document %>
+  </div>
+</div>

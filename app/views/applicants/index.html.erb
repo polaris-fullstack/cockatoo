@@ -1,0 +1,49 @@
+<%= content_for :title, "Applicants" %>
+<%= turbo_stream_from :applicants %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <h1 class="h3">Applicants</h1>
+
+      <div class="text-sm font-medium">
+        <span class="text-gray-500 dark:text-gray-300/75">Sort by:</span>
+        <%= sortable @applicants, :finance_application_id, "Finance application", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :title, "Title", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :surname, "Surname", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :given_names, "Given names", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :dob, "Dob", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :drivers_licence, "Drivers licence", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :licence_state, "Licence state", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :marital_status, "Marital status", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :dependants, "Dependants", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :email, "Email", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :phone, "Phone", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :address, "Address", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :address_state, "Address state", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :address_postcode, "Address postcode", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :residency_status, "Residency status", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :us_citizen, "Us citizen", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :tin, "Tin", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @applicants, :other_tax_countries, "Other tax countries", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+      </div>
+    </div>
+
+    <%= link_to t("scaffold.new.title", model: "Applicant"), new_applicant_path, class: "btn btn-secondary" %>
+  </div>
+
+  <%= tag.div id: ("applicants" if first_page?), class: "bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded-md shadow p-6 space-y-8" do %>
+    <%= render partial: "applicants/applicant", collection: @applicants, as: :applicant, cached: true %>
+
+    <div class="hidden only:block text-center">
+      <p class="mb-4 h3">Create your first Applicant</p>
+      <%= link_to t("scaffold.new.title", model: "Applicant"), new_applicant_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <% if @pagy.pages > 1 %>
+    <div class="my-6 text-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
+</div>

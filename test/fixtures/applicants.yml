@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  finance_application: one
+  title: MyString
+  surname: MyString
+  given_names: MyString
+  dob: 2025-04-16
+  drivers_licence: MyString
+  licence_state: MyString
+  marital_status: MyString
+  dependants: 1
+  email: MyString
+  phone: MyString
+  address: MyString
+  address_state: MyString
+  address_postcode: MyString
+  residency_status: MyString
+  us_citizen: false
+  tin: MyString
+  other_tax_countries: MyString
+
+two:
+  finance_application: two
+  title: MyString
+  surname: MyString
+  given_names: MyString
+  dob: 2025-04-16
+  drivers_licence: MyString
+  licence_state: MyString
+  marital_status: MyString
+  dependants: 1
+  email: MyString
+  phone: MyString
+  address: MyString
+  address_state: MyString
+  address_postcode: MyString
+  residency_status: MyString
+  us_citizen: false
+  tin: MyString
+  other_tax_countries: MyString

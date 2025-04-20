@@ -1,0 +1,10 @@
+<div id="flash" data-turbo-temporary>
+  <%= banner message: alert, classes: "banner-warning", icon_name: :alert if alert %>
+  <%= banner message: notice, classes: "banner-info", icon_name: :notice if notice %>
+</div>
+
+<div id="toasts" data-turbo-temporary>
+  <% toasts.each do |_, toast| %>
+    <%= render ToastComponent.new(toast) %>
+  <% end %>
+</div>

@@ -1,0 +1,41 @@
+<div class="dropdown-menu left-align" data-controller="dropdown">
+  <button data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" aria-label="Account Menu" class="account-menu">
+    <%= account_avatar current_account, size: "size-6" %>
+    <span class="name"><%= current_account.name %></span>
+  </button>
+  <nav data-dropdown-target="menu"
+    data-transition-enter="transition ease-out duration-200"
+    data-transition-enter-from="opacity-0 translate-y-1"
+    data-transition-enter-to="opacity-100 translate-y-0"
+    data-transition-leave="transition ease-in duration-150"
+    data-transition-leave-from="opacity-100 translate-y-0"
+    data-transition-leave-to="opacity-0 translate-y-1"
+    class="menu-component hidden">
+    <ul class="menu-list">
+      <li class="menu-section">
+        <ul class="menu-sub-list">
+          <% Current.other_accounts.each do |account| %>
+            <li>
+              <%= switch_account_button account, data: { controller: :accounts, action: "ajax:success->accounts#reconnect" } do %>
+                <%= account_avatar account, size: "size-6" %>
+                <span><%= account.name %></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+      <li class="menu-section">
+        <ul class="menu-sub-list">
+          <li>
+            <%= link_to new_account_path do %>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+              </svg>
+              Create an account
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>

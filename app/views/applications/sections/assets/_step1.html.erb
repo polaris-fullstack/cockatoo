@@ -1,0 +1,14 @@
+<%= render 'finance_applications/sections/_sidebar', current_section: :assets %>
+<div class="ml-72 p-8">
+  <h2 class="text-xl font-bold mb-6">Assets</h2>
+  <%= form_with model: @finance_application, url: assets_step1_finance_application_path(@finance_application), method: :patch do |f| %>
+    <div class="mb-4">
+      <%= f.label :assets, 'Describe your significant assets (savings, investments, vehicles, etc.)' %>
+      <%= f.text_area :assets, class: 'form-control', rows: 5 %>
+    </div>
+    <div class="flex justify-between mt-6">
+      <%= link_to 'Back', properties_step2_finance_application_path(@finance_application), class: "btn btn-secondary" %>
+      <%= f.submit 'Save & Next', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

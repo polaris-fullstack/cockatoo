@@ -1,0 +1,32 @@
+one:
+  owner: one
+  name: "User One"
+  personal: true
+
+two:
+  owner: two
+  name: "User Two"
+  personal: true
+
+company:
+  owner: one
+  name: "Company"
+  personal: false
+  domain: company.com
+  subdomain: company
+
+invited:
+  owner: invited
+  name: "Invited User"
+  personal: true
+
+fake_processor:
+  owner: fake_processor
+  name: "Per Seat Account"
+  personal: false
+  account_users_count: 1
+
+subscribed:
+  owner: subscribed
+  name: "Subscribed User"
+  personal: true

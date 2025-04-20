@@ -1,0 +1,82 @@
+require "test_helper"
+
+class <%= class_name %>ClientTest < ActiveSupport::TestCase
+  setup do
+    @client = <%= class_name %>Client.new(token: "test")
+  end
+<% attributes.each do |attr| -%>
+  <%- if attr.index? %>
+  test "<%= attr.name %> <%= attr.verb %>" do
+    stub_request(:<%= attr.verb %>, "<%= url %>/<%= plural_file_name %>")
+    @client.<%= attr.name %>
+  end
+  <%- elsif attr.show? %>
+  test "<%= attr.name %> <%= attr.verb %>" do
+    stub_request(:<%= attr.verb %>, "<%= url %>/<%= plural_file_name %>/123")
+    @client.<%= attr.name %>(123)
+  end
+  <%- elsif attr.create? %>
+  test "<%= attr.name %> <%= attr.verb %>" do
+    stub_request(:<%= attr.verb %>, "<%= url %>/<%= plural_file_name %>").with(body: {"a" => "a", "b" => "b"})
+    @client.<%= attr.name%>(a: "a", b: "b")
+  end
+  <%- elsif attr.update? %>
+  test "<%= attr.name %> <%= attr.verb %>" do
+    stub_request(:<%= attr.verb %>, "<%= url %>/<%= plural_file_name %>/123").with(body: {"a" => "a", "b" => "b"})
+    @client.<%= attr.name %>(123, a: "a", b: "b")
+  end
+  <%- elsif attr.destroy? %>
+  test "<%= attr.name %> <%= attr.verb %>" do
+    stub_request(:<%= attr.verb %>, "<%= url %>/<%= plural_file_name %>/123")
+    @client.<%= attr.name %>(123)
+  end
+  <%- end -%>
+<% end -%>
+
+  test "authorization header" do
+    stub_request(:get, "<%= url %>/me").with(headers: {"Authorization" => "Bearer test"})
+    @client.me
+  end
+
+  test "unauthorized" do
+    stub_request(:get, "<%= url %>/me").to_return(status: 401)
+    assert_raises <%= class_name %>Client::Unauthorized do
+      @client.me
+    end
+  end
+
+  test "forbidden" do
+    stub_request(:get, "<%= url %>/me").to_return(status: 403)
+    assert_raises <%= class_name %>Client::Forbidden do
+      @client.me
+    end
+  end
+
+  test "not found" do
+    stub_request(:get, "<%= url %>/me").to_return(status: 404)
+    assert_raises <%= class_name %>Client::NotFound do
+      @client.me
+    end
+  end
+
+  test "rate limit" do
+    stub_request(:get, "<%= url %>/me").to_return(status: 429)
+    assert_raises <%= class_name %>Client::RateLimit do
+      @client.me
+    end
+  end
+
+  test "internal error" do
+    stub_request(:get, "<%= url %>/me").to_return(status: 500)
+    assert_raises <%= class_name %>Client::InternalError do
+      @client.me
+    end
+  end
+
+  test "other error" do
+    stub_request(:get, "<%= url %>/me").to_return(status: 418)
+    assert_raises <%= class_name %>Client::Error do
+      @client.me
+    end
+  end
+end

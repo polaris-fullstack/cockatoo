@@ -1,0 +1,10 @@
+<% if Jumpstart.config.payments_enabled? && (!user_signed_in? || Current.account_admin?) && not_subscribed? %>
+  <%= nav_link_to t(".pricing"), pricing_path %>
+<% end %>
+
+<% if !user_signed_in? %>
+  <div class="btn-container">
+    <%= link_to t(".log_in"), new_user_session_path, class: "btn btn-secondary" %>
+    <%= link_to t(".sign_up"), new_user_registration_path, class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,57 @@
+<div id="<%= dom_id employment_history %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Applicant</p>
+    <%= employment_history.applicant_id %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Employer name</p>
+    <%= employment_history.employer_name %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Address</p>
+    <%= employment_history.address %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">State</p>
+    <%= employment_history.state %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Postcode</p>
+    <%= employment_history.postcode %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Phone</p>
+    <%= employment_history.phone %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Occupation</p>
+    <%= employment_history.occupation %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Start date</p>
+    <%= employment_history.start_date %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">End date</p>
+    <%= employment_history.end_date %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Employment type</p>
+    <%= employment_history.employment_type %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Accountant name</p>
+    <%= employment_history.accountant_name %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Accountant firm</p>
+    <%= employment_history.accountant_firm %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Accountant phone</p>
+    <%= employment_history.accountant_phone %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this employment history", employment_history, class: "btn btn-secondary" %>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<div class="mx-auto mt-10 p-10 bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 text-center" style="max-width: 600px">
+  <h1 class="text-3xl mb-3 text-gray-800 dark:text-gray-200">Join <%= @account.name %></h1>
+  <div class="flex items-center justify-center text-gray-800 dark:text-gray-200">
+    <%= image_tag avatar_url_for(@account_invitation.account), class: "h-5 w-5 rounded-full inline-block mr-1" %>
+    <div>
+      <%= t(".invited_you_to_join_html", inviter: @account_invitation.invited_by.name, account: @account_invitation.account.name) %>
+    </div>
+  </div>
+
+  <div class="mt-5 flex gap-2 justify-center">
+    <%= button_to t(".accept"), account_invitation_path(@account_invitation.token), method: :put, class: "btn btn-primary" %>
+    <%= button_to t(".decline"), account_invitation_path(@account_invitation.token), method: :delete, class: "btn btn-secondary", data: {turbo_confirm: t("are_you_sure")} %>
+  </div>
+</div>

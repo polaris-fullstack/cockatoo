@@ -1,0 +1,17 @@
+<div id="<%= dom_id document %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Applicant</p>
+    <%= document.applicant_id %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Document type</p>
+    <%= document.document_type %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">File</p>
+    <%= document.file %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this document", document, class: "btn btn-secondary" %>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<%= render 'finance_applications/sections/_sidebar', current_section: :properties %>
+<div class="ml-72 p-8">
+  <h2 class="text-xl font-bold mb-6">Property Address</h2>
+  <%= form_with model: @finance_application, url: properties_step2_finance_application_path(@finance_application), method: :patch do |f| %>
+    <%= f.fields_for :properties do |property_form| %>
+      <div class="mb-4">
+        <%= property_form.label :address, 'Property Address' %>
+        <%= property_form.text_field :address, class: 'form-control' %>
+      </div>
+      <div class="mb-4">
+        <%= property_form.label :property_state, 'State' %>
+        <%= property_form.text_field :property_state, class: 'form-control' %>
+      </div>
+      <div class="mb-4">
+        <%= property_form.label :property_postcode, 'Postcode' %>
+        <%= property_form.text_field :property_postcode, class: 'form-control' %>
+      </div>
+    <% end %>
+    <div class="flex justify-between mt-6">
+      <%= link_to 'Back', properties_step1_finance_application_path(@finance_application), class: "btn btn-secondary" %>
+      <%= f.submit 'Save & Next', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

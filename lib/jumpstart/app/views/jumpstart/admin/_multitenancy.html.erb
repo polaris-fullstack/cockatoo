@@ -1,0 +1,52 @@
+<h4>Accounts</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">Accounts make sharing resources easy with other users and teams.</p>
+<p class="mt-8 text-sm text-gray-700 dark:text-gray-300">What kind of accounts does your application need?</p>
+<div class="mt-2 form-group">
+  <div class="form-picker-group">
+    <%= f.radio_button :account_types, "both", checked: Jumpstart.config.account_types == "both", id: "both_accounts" %>
+    <%= label_tag "both_accounts", "Personal and Team Accounts" %>
+  </div>
+
+  <div class="form-picker-group">
+    <%= f.radio_button :account_types, "personal", checked: Jumpstart.config.account_types == "personal", id: "personal_accounts" %>
+    <%= label_tag "personal_accounts", "Just Personal Accounts" %>
+  </div>
+
+  <div class="form-picker-group">
+    <%= f.radio_button :account_types, "team", checked: Jumpstart.config.account_types == "team", id: "team_accounts" %>
+    <%= label_tag "team_accounts", "Just Team Accounts" %>
+  </div>
+</div>
+
+<hr class="my-4">
+
+<h4>Account Switching</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">How would you like to switch between accounts?</p>
+
+<div class="mt-4 mb-24 space-y-2">
+  <p>Switch accounts by:</p>
+
+  <div class="form-picker-group toggle">
+    <%= check_box_tag "configuration[multitenancy][]", "session", Jumpstart::Multitenancy.session?, id: "multitenancy_session", disabled: true %>
+    <div>
+      <%= label_tag "multitenancy_session", "Session Cookie" %>
+      <p>Always enabled as a fallback</p>
+    </div>
+  </div>
+
+  <div class="form-picker-group toggle">
+    <%= check_box_tag "configuration[multitenancy][]", "subdomain", Jumpstart::Multitenancy.subdomain?, id: "multitenancy_subdomain" %>
+    <div>
+      <%= label_tag "multitenancy_subdomain", "Subdomains & Custom Domains" %>
+      <p>Such as you.example.org or mydomain.com</p>
+    </div>
+  </div>
+
+  <div class="form-picker-group toggle">
+    <%= check_box_tag "configuration[multitenancy][]", "path", Jumpstart::Multitenancy.path?, id: "multitenancy_path" %>
+    <div>
+      <%= label_tag "multitenancy_path", "URL Path" %>
+      <p>Prepends <code>/:account_id/</code> as the script_name before Rails routes</p>
+    </div>
+  </div>
+</div>

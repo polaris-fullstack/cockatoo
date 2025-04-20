@@ -1,0 +1,63 @@
+<nav class="w-64 h-full bg-white border-r px-4 py-6 rounded shadow">
+  <h3 class="font-medium text-gray-700 mb-4">Application Sections</h3>
+  <ul class="space-y-4">
+    <li><a href="#" class="block px-4 py-2 rounded transition-colors duration-150 bg-blue-100 text-blue-700 font-bold" data-section="0">Loan Details</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" data-section="1">Applicants</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" data-section="2">Properties</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" data-section="3">Assets</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" data-section="4">Liabilities</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" data-section="5">Documents</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-50 hover:text-blue-700" data-section="6">Declaration</a></li>
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionLinks = document.querySelectorAll('[data-section]');
+    const stepperItems = document.querySelectorAll('[data-step]');
+    const formSections = document.querySelectorAll('.form-section');
+    
+    // Initially hide all sections except the first one
+    formSections.forEach((section, index) => {
+      if (index === 0) {
+        section.classList.remove('hidden');
+      } else {
+        section.classList.add('hidden');
+      }
+    });
+    
+    sectionLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const sectionIndex = parseInt(this.getAttribute('data-section'));
+        
+        // Update active sidebar link
+        sectionLinks.forEach(l => {
+          l.classList.remove('bg-blue-100', 'text-blue-700', 'font-bold');
+          l.classList.add('hover:bg-blue-50', 'hover:text-blue-700');
+        });
+        this.classList.add('bg-blue-100', 'text-blue-700', 'font-bold');
+        this.classList.remove('hover:bg-blue-50', 'hover:text-blue-700');
+        
+        // Update stepper (optional - if you want to keep the stepper in sync)
+        stepperItems.forEach((item, index) => {
+          if (index === sectionIndex) {
+            item.classList.add('text-blue-600', 'dark:text-blue-500');
+          } else {
+            item.classList.remove('text-blue-600', 'dark:text-blue-500');
+          }
+        });
+        
+        // Show the selected section, hide others
+        formSections.forEach((section, index) => {
+          if (index === sectionIndex) {
+            section.classList.remove('hidden');
+          } else {
+            section.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>

@@ -1,0 +1,78 @@
+<%= form_with(model: employment_history) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+  <div class="form-group">
+    <%= form.label :applicant_id %>
+    <%= form.text_field :applicant_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :employer_name %>
+    <%= form.text_field :employer_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :state %>
+    <%= form.text_field :state, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :postcode %>
+    <%= form.text_field :postcode, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :occupation %>
+    <%= form.text_field :occupation, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :employment_type %>
+    <%= form.text_field :employment_type, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :accountant_name %>
+    <%= form.text_field :accountant_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :accountant_firm %>
+    <%= form.text_field :accountant_firm, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :accountant_phone %>
+    <%= form.text_field :accountant_phone, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
+
+    <% if form.object.new_record? %>
+      <%= link_to t("cancel"), employment_histories_path, class: "btn btn-secondary" %>
+    <% else %>
+      <%= link_to t("cancel"), employment_history_path(@employment_history), class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+<% end %>

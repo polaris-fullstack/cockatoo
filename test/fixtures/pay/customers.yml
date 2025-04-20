@@ -1,0 +1,13 @@
+fake:
+  owner: fake_processor (Account)
+  type: Pay::FakeProcessor::Customer
+  processor: fake_processor
+  processor_id: fake_1000
+  default: true
+
+subscribed:
+  owner: subscribed (Account)
+  type: Pay::FakeProcessor::Customer
+  processor: fake_processor
+  processor_id: fake_1001
+  default: true

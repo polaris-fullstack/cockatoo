@@ -1,0 +1,77 @@
+<div id="<%= dom_id applicant %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Finance application</p>
+    <%= applicant.finance_application_id %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Title</p>
+    <%= applicant.title %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Surname</p>
+    <%= applicant.surname %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Given names</p>
+    <%= applicant.given_names %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Dob</p>
+    <%= applicant.dob %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Drivers licence</p>
+    <%= applicant.drivers_licence %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Licence state</p>
+    <%= applicant.licence_state %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Marital status</p>
+    <%= applicant.marital_status %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Dependants</p>
+    <%= applicant.dependants %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Email</p>
+    <%= applicant.email %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Phone</p>
+    <%= applicant.phone %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Address</p>
+    <%= applicant.address %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Address state</p>
+    <%= applicant.address_state %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Address postcode</p>
+    <%= applicant.address_postcode %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Residency status</p>
+    <%= applicant.residency_status %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Us citizen</p>
+    <%= applicant.us_citizen %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Tin</p>
+    <%= applicant.tin %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Other tax countries</p>
+    <%= applicant.other_tax_countries %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this applicant", applicant, class: "btn btn-secondary" %>
+  <% end %>
+</div>

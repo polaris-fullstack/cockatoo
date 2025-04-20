@@ -1,0 +1,17 @@
+<div class="max-w-4xl mx-auto p-4 my-8 lg:my-24">
+  <h1 class="mb-4"><%= t(".title", agreement: @agreement.title) %></h1>
+  <%= tag.p t("users.agreements.show.last_updated", date: l(@agreement.updated.to_date, format: :long)), class: "mb-4 text-gray-700 leading-normal italic" %>
+
+  <%= render partial: @agreement %>
+
+  <div class="mt-8 sm:mt-16">
+    <div class="text-center">
+      <%= t(".description", agreement: @agreement.title) %>
+    </div>
+
+    <div class="mt-4 flex items-center justify-center gap-2">
+      <%= button_to t(".decline"), agreement_path(@agreement), method: :delete, class: "btn btn-secondary btn-large" %>
+      <%= button_to t(".accept"), agreement_path(@agreement), method: :patch, class: "btn btn-primary btn-large" %>
+    </div>
+  </div>
+</div>

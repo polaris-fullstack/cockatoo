@@ -1,0 +1,58 @@
+<% content_for :title, "Payments & Billing" %>
+<% content_for :subtitle do %>
+  Jumpstart Pro uses the <%= link_to "Pay gem", "https://github.com/pay-rails/pay", target: :_blank %> for handling payments and billing.
+<% end %>
+
+<%= h2_with_anchor "Accepting Payments" %>
+
+<p>Jumpstart Pro supports using several payment processors depending on your needs and location of your business.</p>
+<p><%= link_to "Subscriptions", subscriptions_docs_path, class: "link" %> are associated with Accounts, which allows you to offer separate billing for each group of users. You'll commonly see this in apps that support multiple accounts like GitHub Organizations, Heroku Teams, etc.</p>
+<p><%= link_to "One-time payments", one_time_payments_docs_path, class: "link" %> are also supported by Jumpstart Pro too.</p>
+
+<%= h2_with_anchor "Payment Processors" %>
+
+<%= h4_with_anchor "Stripe" %>
+
+<p>Processing payments with Stripe is as simple as adding your Stripe credentials, enabling the Stripe configuration, and adding plans with Stripe IDs on them.</p>
+<p>Stripe is integrated using Embedded Checkout which supports promo codes, calculating sales tax, and any payment methods enabled on your Stripe account.</p>
+
+<%= h5_with_anchor "Stripe Webhooks" %>
+
+<p>The <code>/webhooks/stripe</code> endpoint is available in your application for handling webhooks from Stripe. Add this URL to Stripe to process activity from your account.</p>
+
+<%= h5_with_anchor "Stripe CLI" %>
+
+<p>Stripe now requires webhooks in development and provides the <%= link_to "Stripe CLI", "https://stripe.com/docs/stripe-cli", target: :_blank, class: "link" %> to forward webhooks to your local Rails server. After enabling Stripe in Jumpstart Pro, you will need to install the Stripe CLI and login. Jumpstart Pro will add the stripe listen process to Procfile.dev to forward webhooks while your Rails application is running.</p>
+
+<pre><code>stripe login</code><code>stripe listen --forward-to localhost:3000/webhooks/stripe</code></pre>
+
+<p>Once stripe CLI is running it should display your signing secret. Add it to your credentials to make sure your server can receive stripe events.</p>
+<p>Alternatively, you can use ngrok or localtunnel to expose your Rails server to the internet so it can receive webhooks.</p>
+
+<%= h4_with_anchor "Paddle" %>
+
+<p>Processing payments with Paddle is as simple as adding your credentials, enabling the payment processor, and adding Plans with Paddle IDs on them.</p>
+<p>Paddle comes in two versions currently: Paddle Classic and Paddle Billing. You'll need to determine which version your Paddle account is and enable the correct version.</p>
+
+<%= h5_with_anchor "Paddle Webhooks" %>
+
+<p>The <code>/webhooks/paddle_billing</code> endpoint is available in your application for handling webhooks from Paddle Billing. Add this URL to Paddle Billing to process activity from your account.</p>
+<p>The <code>/webhooks/paddle_classic</code> endpoint is available in your application for handling webhooks from Paddle Classic. Add this URL to Paddle Classic to process activity from your account.</p>
+
+<%= h4_with_anchor "Braintree" %>
+
+<p>Processing payments with Braintree is as simple as adding your credentials, enabling the payment processor, and adding Plans with the Braintree IDs on them. We handle all the heavy lifting such as calculation proration discounts to allow users to swap between monthly and yearly plans which Braintree does not support out of the box.</p>
+
+<%= h5_with_anchor "Braintree Webhooks" %>
+
+<p>The <code>/webhooks/braintree</code> endpoint is available in your application for handling webhooks from Braintree. Add this URL to Braintree to process activity from your account.</p>
+
+<%= h5_with_anchor "Plan Credit Discount" %>
+
+<p>Before using Braintree, you will need to define a <code>plan-credit</code> discount in your Braintree control panel. This discount will be used to properly prorate subscriptions that change from yearly to monthly billing, or from monthly to yearly billing.</p>
+<p>The discount amount configured in the Braintree control panel can be any value you wish, as Pay will override the defined amount with our own custom amount each time we apply the coupon. This coupon is needed since Braintree does not natively support prorating subscriptions across subscription frequencies.</p>
+
+<%= h4_with_anchor "PayPal" %>
+
+<p>PayPal is supported out of the box using Braintree for processing.</p>
+<p>To enable PayPal in Jumpstart Pro, you'll first need to enable it in your Braintree account under the Processing Options section.</p>

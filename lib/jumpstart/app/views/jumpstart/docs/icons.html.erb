@@ -1,0 +1,28 @@
+<% content_for :title, "Icons" %>
+
+<%= h2_with_anchor "Heroicons" %>
+
+<p>Our recommended icon set is <%= link_to "Heroicons", "https://heroicons.com/", target: :_blank, class: "link" %>. They're created by the TailwindCSS creators and come with solid, outline, and mini variations.</p>
+<p>To use them, simply copy the SVG from Heroicons and paste it into your HTML. This saves your browser from having to make a separate request to render the icons.</p>
+<p>Here's an example of an icon using <code>text-primary-500</code> to change the icon to blue.</p>
+
+<%= render "jumpstart/docs/snippet" do %>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-primary-500">
+  <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+</svg>
+<% end %>
+
+<%= h2_with_anchor "FontAwesome" %>
+
+<p>Font Awesome has an extensive icon set, so if you can't find something in Heroicons, you can probably find it in FontAwesome.</p>
+<p class="mb-6">Using Font Awesome icons is as simple as:</p>
+
+<ol>
+  <li><%= link_to "Create a Kit", "https://fontawesome.com/kits", target: :_blank, class: "link" %> on FontAwesome's website.</li>
+  <li>Include their embed code in the head tag of each layout.</li>
+  <li>Use the <code>fa_icon</code> helper or paste the FontAwesome HTML into your views.
+    <div class="mt-4 not-prose">
+      <pre><code>&lt;%= fa_icon "thumbs-up" %&gt;</code></pre>
+    </div>
+  </li>
+</ol>

@@ -1,0 +1,28 @@
+<div data-controller="dashboard-charts">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+    <div>
+      <h3 class="font-semibold mb-2">Income Trend</h3>
+      <canvas data-dashboard-charts-target="income" data-values='<%= @income_chart.to_json %>'></canvas>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-2">Assets Trend</h3>
+      <canvas data-dashboard-charts-target="assets" data-values='<%= @assets_chart.to_json %>'></canvas>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-2">Liabilities Trend</h3>
+      <canvas data-dashboard-charts-target="liabilities" data-values='<%= @liabilities_chart.to_json %>'></canvas>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-2">Expenses Trend</h3>
+      <canvas data-dashboard-charts-target="expenses" data-values='<%= @expenses_chart.to_json %>'></canvas>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-2">Loan Amount Trend</h3>
+      <canvas data-dashboard-charts-target="loanAmount" data-values='<%= @loan_amount_chart.to_json %>'></canvas>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-2">Approval Likelihood Trend</h3>
+      <canvas data-dashboard-charts-target="likelihood" data-values='<%= @likelihood_chart.to_json %>'></canvas>
+    </div>
+  </div>
+</div>

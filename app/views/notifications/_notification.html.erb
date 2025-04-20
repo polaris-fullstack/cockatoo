@@ -1,0 +1,18 @@
+<%= link_to notification_path(notification), data: {
+    notifications_target: "notification",
+    id: notification&.id,
+    seen_at: notification&.seen_at,
+    read_at: notification&.read_at,
+  },
+  class: "flex items-center gap-4 px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800" do %>
+  <div class="flex-1">
+    <p class="mb-2 text-sm leading-5 font-medium text-gray-900 dark:text-gray-200 text-wrap line-clamp-3">
+      <%= notification.message %>
+    </p>
+
+    <p class="text-sm text-gray-600 dark:text-gray-400"><%= local_time_ago notification&.created_at %></p>
+  </div>
+
+  <%# dot is toggled by CSS from the parent's data-read-at attribute presence %>
+  <div class="unread"></div>
+<% end %>

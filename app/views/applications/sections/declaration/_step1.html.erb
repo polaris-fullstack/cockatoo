@@ -1,0 +1,14 @@
+<%= render 'finance_applications/sections/_sidebar', current_section: :declaration %>
+<div class="ml-72 p-8">
+  <h2 class="text-xl font-bold mb-6">Declaration</h2>
+  <%= form_with model: @finance_application, url: declaration_step1_finance_application_path(@finance_application), method: :patch do |f| %>
+    <div class="mb-4">
+      <%= f.label :declaration, 'I declare that the information provided is true and correct.' %>
+      <%= f.check_box :declaration %>
+    </div>
+    <div class="flex justify-between mt-6">
+      <%= link_to 'Back', documents_step1_finance_application_path(@finance_application), class: "btn btn-secondary" %>
+      <%= f.submit 'Submit Application', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

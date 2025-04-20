@@ -1,0 +1,18 @@
+<%= render 'finance_applications/sections/_sidebar', current_section: :assets %>
+<div class="ml-72 p-8">
+  <h2 class="text-xl font-bold mb-6">Superannuation & Other Assets</h2>
+  <%= form_with model: @finance_application, url: assets_step2_finance_application_path(@finance_application), method: :patch do |f| %>
+    <div class="mb-4">
+      <%= f.label :superannuation, 'Superannuation (if any)' %>
+      <%= f.text_field :superannuation, class: 'form-control' %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :other_assets, 'Other Notable Assets' %>
+      <%= f.text_area :other_assets, class: 'form-control', rows: 3 %>
+    </div>
+    <div class="flex justify-between mt-6">
+      <%= link_to 'Back', assets_step1_finance_application_path(@finance_application), class: "btn btn-secondary" %>
+      <%= f.submit 'Save & Next', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

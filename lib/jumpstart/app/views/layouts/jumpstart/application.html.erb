@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html class="<%= class_names("h-full antialiased", "dark": current_user&.dark_theme?) %>" lang="<%= I18n.locale %>">
+  <head>
+    <title>Jumpstart Docs</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= viewport_meta_tag %>
+
+    <% if current_user&.system_theme? %><script>document.documentElement.classList.toggle("dark", window.matchMedia('(prefers-color-scheme: dark)').matches)</script><% end %>
+    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag 'tailwind', media: 'all', 'data-turbo-track': 'reload' %>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+      document.addEventListener("turbo:load", function() {
+        var snippets = document.querySelectorAll('pre code')
+        snippets.forEach(function(snippet) {
+          hljs.highlightBlock(snippet);
+          snippet.parentNode.classList.add('dark:border', 'dark:border-gray-400/50', 'dark:rounded-sm');
+        })
+      });
+    </script>
+
+    <%= yield :head %>
+  </head>
+  <body class="h-full overflow-x-hidden font-sans font-normal leading-normal bg-offwhite dark:bg-gray-900 dark:text-gray-50" data-controller="theme" data-theme-preference-value="<%= current_user&.theme %>">
+    <%= yield %>
+  </body>
+</html>

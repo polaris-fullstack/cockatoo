@@ -1,0 +1,64 @@
+<% if @subscription.on_trial? %>
+  <div class="banner banner-warning" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+    </svg>
+    <p><%= t(".trial_ends", days: time_ago_in_words(@subscription.trial_ends_at)) %></p>
+  </div>
+<% end %>
+
+<div class="container m-auto my-10">
+  <div class="flex flex-wrap justify-center">
+    <div class="text-center">
+      <h1><%= t(".title") %></h1>
+      <p class="mt-2 text-xl text-gray-500"><%= t(".description") %></p>
+    </div>
+  </div>
+
+  <div class="sm:flex flex-wrap items-center justify-center"
+       data-controller="pricing"
+       data-pricing-frequency-value="<%= @subscription.plan&.yearly? ? "yearly" : "monthly" %>"
+       data-pricing-active-frequency-class="shadow-xs text-black hover:text-black bg-white dark:text-white dark:hover:text-white dark:bg-gray-900"
+       data-pricing-inactive-frequency-class="hover:text-gray-900 dark:text-gray-50 dark:hover:text-gray-200"
+       data-pricing-active-plans-class="flex"
+       data-pricing-inactive-plans-class="hidden"
+       data-pricing-hidden-toggle-class="hidden">
+    <div data-pricing-target="toggle" class="hidden relative self-center my-8 bg-gray-200 rounded-full p-0.5 flex sm:mt-8">
+      <button type="button" data-action="click->pricing#switch" data-pricing-target="frequency" data-frequency="monthly" class="relative w-1/2 bg-white border-gray-200 rounded-full py-2 text-sm font-medium text-gray-700 whitespace-nowrap focus:outline-hidden focus:z-10 sm:w-auto sm:px-8">Monthly</button>
+      <button type="button" data-action="click->pricing#switch" data-pricing-target="frequency" data-frequency="yearly" class="ml-0.5 relative w-1/2 border border-transparent rounded-full py-2 text-sm font-medium text-gray-700 whitespace-nowrap focus:outline-hidden focus:z-10 sm:w-auto sm:px-8">Yearly</button>
+    </div>
+
+    <div class="w-full lg:px-0 px-2">
+      <div data-pricing-target="plans" data-frequency="monthly" class="flex flex-wrap items-center justify-center -mx-4">
+        <% @monthly_plans.each do |plan| %>
+          <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
+            <% if @subscription.plan == plan %>
+              <div class="btn btn-secondary btn-block"><%= t(".current_plan") %></div>
+            <% else %>
+              <%= form_with url: subscription_url, method: :patch do |f| %>
+                <%= f.hidden_field :plan, value: plan.to_param %>
+                <%= f.button t(".change_plan"), class: "btn btn-secondary btn-block", data: { disable_with: t(".processing"), turbo_confirm: "Are you sure?" } %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div data-pricing-target="plans" data-frequency="yearly" class="hidden flex-wrap items-center justify-center -mx-4">
+        <% @yearly_plans.each do |plan| %>
+          <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
+            <% if @subscription.plan == plan %>
+              <div class="btn btn-secondary btn-block"><%= t(".current_plan") %></div>
+            <% else %>
+              <%= form_with url: subscription_url, method: :patch do |f| %>
+                <%= f.hidden_field :plan, value: plan.to_param %>
+                <%= f.button t(".change_plan"), class: "btn btn-secondary btn-block", data: { disable_with: t(".processing"), turbo_confirm: "Are you sure?" } %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

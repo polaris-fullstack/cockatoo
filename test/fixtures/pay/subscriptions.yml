@@ -1,0 +1,8 @@
+subscribed:
+  type: Pay::FakeProcessor::Subscription
+  customer: subscribed
+  name: default
+  processor_id: fake_1
+  processor_plan: fake
+  quantity: 1
+  status: active

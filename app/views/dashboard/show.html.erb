@@ -1,0 +1,100 @@
+<div class="container mx-auto p-4">
+  <div class="my-8">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-6">Finance Applications Dashboard</h1>
+
+    <!-- Flowbite Alert for CSV Export Success -->
+    <div id="csv-export-alert" class="hidden mb-4">
+      <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 00-1.414 0L9 11.586 6.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l7-7a1 1 0 000-1.414z"></path></svg>
+        <span class="font-medium">CSV exported successfully!</span>
+      </div>
+    </div>
+
+    <!-- Flowbite Card: Filter Form -->
+    <div class="mb-8">
+      <form method="get" class="flex flex-wrap gap-4 items-end bg-white border border-gray-200 rounded-lg shadow-md p-6">
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900">State</label>
+          <select name="state" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="">All</option>
+            <% Property.distinct.pluck(:property_state).compact.each do |state| %>
+              <option value="<%= state %>" <%= params[:state] == state ? 'selected' : '' %>><%= state %></option>
+            <% end %>
+          </select>
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900">From</label>
+          <input type="date" name="from" value="<%= params[:from] %>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900">To</label>
+          <input type="date" name="to" value="<%= params[:to] %>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900">First Time Owner</label>
+          <select name="first_time_owner" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="">All</option>
+            <option value="true" <%= params[:first_time_owner] == 'true' ? 'selected' : '' %>>Yes</option>
+            <option value="false" <%= params[:first_time_owner] == 'false' ? 'selected' : '' %>>No</option>
+          </select>
+        </div>
+        <div>
+          <label class="block mb-2 text-sm font-medium text-gray-900">FHOG Eligible</label>
+          <select name="fhog_eligible" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="">All</option>
+            <option value="true" <%= params[:fhog_eligible] == 'true' ? 'selected' : '' %>>Yes</option>
+            <option value="false" <%= params[:fhog_eligible] == 'false' ? 'selected' : '' %>>No</option>
+          </select>
+        </div>
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Filter</button>
+        <button type="button" id="export-csv" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Export CSV</button>
+      </form>
+    </div>
+
+    <!-- Flowbite Card Grid: Financial Summary -->
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center">
+        <div class="text-3xl font-bold text-blue-700 mb-1"><%= number_to_currency(@total_income, unit: 'A$', precision: 0) %></div>
+        <div class="text-gray-600 dark:text-gray-300">Total Income (AUD)</div>
+      </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center">
+        <div class="text-3xl font-bold text-green-700 mb-1"><%= number_to_currency(@total_assets, unit: 'A$', precision: 0) %></div>
+        <div class="text-gray-600 dark:text-gray-300">Total Assets (AUD)</div>
+      </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center">
+        <div class="text-3xl font-bold text-red-700 mb-1"><%= number_to_currency(@total_liabilities, unit: 'A$', precision: 0) %></div>
+        <div class="text-gray-600 dark:text-gray-300">Total Liabilities (AUD)</div>
+      </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center">
+        <div class="text-3xl font-bold text-yellow-700 mb-1"><%= number_to_currency(@total_expenses, unit: 'A$', precision: 0) %></div>
+        <div class="text-gray-600 dark:text-gray-300">Total Expenses (AUD)</div>
+      </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center">
+        <div class="text-3xl font-bold text-purple-700 mb-1"><%= number_to_currency(@total_loan_amount, unit: 'A$', precision: 0) %></div>
+        <div class="text-gray-600 dark:text-gray-300">Total Loan Amount (AUD)</div>
+      </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center">
+        <div class="text-3xl font-bold text-indigo-700 mb-1"><%= number_with_precision((@avg_likelihood_of_approval || 0) * 100, precision: 1) %>%</div>
+        <div class="text-gray-600 dark:text-gray-300">Avg. Approval Likelihood</div>
+      </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center">
+        <div class="text-3xl font-bold text-gray-800 dark:text-white mb-1"><%= @applications_count %></div>
+        <div class="text-gray-600 dark:text-gray-300">Total Applications</div>
+      </div>
+    </div>
+
+    <% if @applications_count > 0 %>
+      <%= render 'dashboard/charts' %>
+    <% else %>
+      <div class="text-center py-10 px-6 bg-gray-50 rounded-lg border border-gray-200 shadow-sm">
+        <p class="text-lg text-gray-600">No finance application data available yet.</p>
+        <p class="text-sm text-gray-500 mt-2">Add your first application to see dashboard insights!</p>
+        <%= link_to 'Start New Application', new_application_path, class: "mt-4 inline-block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" %>
+      </div>
+    <% end %>
+
+    <!-- Import Chart.js and CSV export logic -->
+    <%= javascript_import_module_tag "dashboard_export" %>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </div>
+</div>

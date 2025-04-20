@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html class="<%= class_names(dark: current_user&.dark_theme?, "hotwire-native": hotwire_native_app?) %>" lang="<%= I18n.locale %>">
+  <head>
+    <%= render "head" %>
+  </head>
+
+  <body data-controller="theme" data-theme-preference-value="<%= current_user&.theme %>">
+    <header>
+      <%= impersonation_banner %>
+      <%= render "flash" %>
+
+      <nav class="minimal-top-nav">
+        <%= link_to root_path do %>
+          <%= render_svg "logo" %>
+          <span class="sr-only"><%= Jumpstart.config.application_name %></span>
+        <% end %>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

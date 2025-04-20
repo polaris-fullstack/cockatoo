@@ -1,0 +1,616 @@
+<% content_for :title, "Navigation" %>
+
+<%= h2_with_anchor "Top Navigation Menu Component" %>
+
+<%= render "jumpstart/docs/snippet" do %>
+  <nav class="top-nav" data-controller="toggle">
+    <section class="logo">
+      <a href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="143" height="24" viewBox="0 0 491 77" fill="current-color" role="img" aria-labelledby="absnf6k4m822gqtomya62lohjol87pa7" class="fill-current"><title id="absnf6k4m822gqtomya62lohjol87pa7">Logo</title>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6301 22.7145L48.7396 5.01411L66.44 42.1237L23.2476 77.0013L16.5602 45.7522L24.6257 40.0987L25.5885 52.4389L52.5403 31.6177L32.2969 36.4441L31.4872 26.0656L14.3135 35.2536L11.6301 22.7145Z"></path>
+          <path d="M466.195 54.887V21.3507H462.316V7.9182H466.195V2.0977L481.892 0V7.9182H490.913V21.3507H481.892V41.2742H489.56V54.887H466.195Z"></path>
+          <path d="M431.219 7.9182H454.855V21.7113H446.916V54.887H431.219V7.9182Z"></path>
+          <path d="M372.726 31.4477C372.726 16.5727 382.559 6.47577 395.64 6.47577C401.684 6.47577 406.285 8.54924 408.901 11.975H409.262C409.172 11.5242 409.081 10.8932 409.081 9.45075V7.91818H423.425V54.887H409.081V53.1741C409.081 51.912 409.172 51.0105 409.262 50.3794H408.901C406.014 54.1658 401.053 56.3294 394.918 56.3294C382.018 56.3294 372.726 46.2325 372.726 31.4477ZM398.436 42.5363C404.3 42.5363 408.54 38.0287 408.54 31.1772C408.54 24.506 404.3 20.0886 398.436 20.0886C392.663 20.0886 388.513 24.506 388.513 31.1772C388.513 38.0287 392.663 42.5363 398.436 42.5363Z"></path>
+          <path d="M346.025 54.887V21.3507H342.146V7.9182H346.025V2.0977L361.722 0V7.9182H370.743V21.3507H361.722V41.2742H369.39V54.887H346.025Z"></path>
+          <path d="M318.494 20.2689C318.494 21.7113 319.577 22.4325 323.005 24.2356L328.869 27.3909C333.74 30.0052 338.612 33.2507 338.612 41.2741C338.612 50.109 332.026 56.3294 320.659 56.3294C309.744 56.3294 304.511 50.5597 302.617 44.6999L313.172 38.6598C313.803 40.6431 316.51 44.2491 320.659 44.2491C322.464 44.2491 323.636 43.2575 323.636 41.7249C323.636 40.5529 322.915 39.6514 320.479 38.3893L314.976 35.234C309.744 32.3492 304.511 29.4643 304.511 20.8098C304.511 13.2371 311.458 6.47577 320.84 6.47577C330.583 6.47577 335.635 11.1636 338.521 16.4826L328.598 22.7931C327.155 20.3591 324.268 17.8348 321.201 17.8348C319.577 17.8348 318.494 18.8265 318.494 20.2689Z"></path>
+          <path d="M300.953 31.8444C300.953 46.6293 291.301 56.7262 278.13 56.7262C272.717 56.7262 268.116 55.0133 265.951 52.2186H265.59C265.68 52.5792 265.77 53.2103 265.77 55.7345V77.0014L250.254 74.644V8.31498H264.598V10.2082C264.598 11.29 264.507 12.1013 264.417 12.7324H264.868C267.845 9.03619 272.807 6.87256 278.851 6.87256C291.661 6.87256 300.953 16.9695 300.953 31.8444ZM275.243 20.4854C269.379 20.4854 265.229 24.9028 265.229 31.6641C265.229 38.5156 269.379 42.9331 275.243 42.9331C281.107 42.9331 285.256 38.5156 285.256 31.6641C285.256 24.9028 281.107 20.4854 275.243 20.4854Z"></path>
+          <path d="M242.99 25.0469V54.887H227.293V25.4977C227.293 22.2522 225.038 20.0886 222.241 20.0886C219.264 20.0886 217.099 22.2522 217.099 25.4977V54.887H201.402V25.4977C201.402 22.2522 199.147 20.0886 196.26 20.0886C193.373 20.0886 191.118 22.2522 191.118 25.4977V54.887H175.421V25.0469C175.421 14.0485 184.622 6.47577 196.079 6.47577C201.763 6.47577 206.274 8.45909 209.521 11.8848C212.859 8.45909 217.55 6.47577 223.234 6.47577C234.691 6.47577 242.99 14.0485 242.99 25.0469Z"></path>
+          <path d="M168.197 54.887H126.338V7.9182H142.035V41.2742H152.5V7.9182H168.197V54.887Z"></path>
+          <path d="M72.9873 64.0777L84.9856 56.3247C86.7899 60.5618 89.9473 62.8156 94.2776 62.8156C100.051 62.8156 103.66 59.0293 103.66 53.1694V21.7067H78.7609V7.91351H119.357V51.727C119.357 67.1429 109.524 76.9694 94.2776 76.9694C83.452 76.9694 76.8665 72.1012 72.9873 64.0777Z"></path>
+        </svg>
+        <span class="sr-only">My App</span>
+      </a>  </section>
+
+      <section class="nav-container hidden lg:flex" data-toggle-target="toggleable">
+        <nav>
+          <%= nav_link_to "Left", "#", class: "active" %>
+          <%= nav_link_to "Left", "#" %>
+        </nav>
+        <nav><%= nav_link_to "Right", "#" %></nav>
+      </section>
+
+      <section class="nav-user-controls">
+        <button type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </button>
+
+        <button role="button" aria-label="Dev Nav">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+          </svg>
+        </button>
+
+        <button aria-label="Notifications">
+          <span class="appearance-none flex items-center relative">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"></path>
+            </svg>
+          </span>
+        </button>
+      </section>
+  </nav>
+<% end %>
+
+<%= h2_with_anchor "Menu Component" %>
+
+<%= render "jumpstart/docs/snippet" do %>
+  <nav class="menu-component">
+    <ul class="menu-list">
+      <li class="menu-section">
+        <h2 class="menu-section-heading">Bobby Bruce</h2>
+
+        <ul class="menu-sub-list">
+          <li><%= link_to "Profile", "#" %></li>
+          <li><%= link_to "Password", "#" %></li>
+          <li><%= link_to "Connected Accounts", "#" %></li>
+          <li><%= link_to "Accounts", "#" %></li>
+        </ul>
+      </li>
+
+      <li class="menu-section">
+        <h2 class="menu-section-heading">dashboard</h2>
+
+        <ul class="menu-sub-list">
+          <li>
+            <%= link_to "#" do %>
+              <span>Dashboard</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.712 4.33a9.027 9.027 0 0 1 1.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 0 0-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 0 1 0 9.424m-4.138-5.976a3.736 3.736 0 0 0-.88-1.388 3.737 3.737 0 0 0-1.388-.88m2.268 2.268a3.765 3.765 0 0 1 0 2.528m-2.268-4.796a3.765 3.765 0 0 0-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 0 1-1.388.88m2.268-2.268 4.138 3.448m0 0a9.027 9.027 0 0 1-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0-3.448-4.138m3.448 4.138a9.014 9.014 0 0 1-9.424 0m5.976-4.138a3.765 3.765 0 0 1-2.528 0m0 0a3.736 3.736 0 0 1-1.388-.88 3.737 3.737 0 0 1-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 0 1-1.652-1.306 9.027 9.027 0 0 1-1.306-1.652m0 0 4.138-3.448M4.33 16.712a9.014 9.014 0 0 1 0-9.424m4.138 5.976a3.765 3.765 0 0 1 0-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 0 1 1.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 0 0-1.652 1.306A9.025 9.025 0 0 0 4.33 7.288" />
+              </svg>
+            <% end %>
+          </li>
+          <li><%= link_to 'Sidekiq', "#" %></li>
+        </ul>
+      </li>
+
+      <li class="menu-section">
+        <h2 class="menu-section-heading">admin</h2>
+
+        <ul class="menu-sub-list">
+          <li>
+            <%= link_to "#" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.712 4.33a9.027 9.027 0 0 1 1.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 0 0-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 0 1 0 9.424m-4.138-5.976a3.736 3.736 0 0 0-.88-1.388 3.737 3.737 0 0 0-1.388-.88m2.268 2.268a3.765 3.765 0 0 1 0 2.528m-2.268-4.796a3.765 3.765 0 0 0-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 0 1-1.388.88m2.268-2.268 4.138 3.448m0 0a9.027 9.027 0 0 1-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0-3.448-4.138m3.448 4.138a9.014 9.014 0 0 1-9.424 0m5.976-4.138a3.765 3.765 0 0 1-2.528 0m0 0a3.736 3.736 0 0 1-1.388-.88 3.737 3.737 0 0 1-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 0 1-1.652-1.306 9.027 9.027 0 0 1-1.306-1.652m0 0 4.138-3.448M4.33 16.712a9.014 9.014 0 0 1 0-9.424m4.138 5.976a3.765 3.765 0 0 1 0-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 0 1 1.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 0 0-1.652 1.306A9.025 9.025 0 0 0 4.33 7.288" />
+              </svg>
+              <span>Admin Area</span>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+<% end %>
+
+<%= h2_with_anchor "Sidebar Menu Component" %>
+
+<%= render "jumpstart/docs/snippet" do %>
+  <aside class="sidebar">
+    <button class="cta-btn">Ask a Question</button>
+
+    <nav>
+      <h2>Section header text</h2>
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav>
+      <h2>Section header text</h2>
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+<% end %>
+
+<%= h2_with_anchor "Sidebar Container Menu Component" %>
+
+<%= render "jumpstart/docs/snippet" do %>
+  <aside class="sidebar sidebar-container">
+    <div class="btn-container"><button class="cta-btn">Ask a Question</button></div>
+
+    <nav>
+      <h2>Section header text</h2>
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav>
+      <h2>Section header text</h2>
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sidebar item
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+<% end %>
+
+<%= h2_with_anchor "Left Navigation Component" %>
+
+<%= render "jumpstart/docs/snippet" do %>
+  <aside class="vertical-nav">
+    <a href="/" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="143" height="24" viewBox="0 0 143 24">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.38342 8.03552L12.7254 3.10962L17.6583 13.437L5.62109 23.1432L3.75739 14.4467L6.00515 12.8734L6.27347 16.3076L13.7846 10.5132L8.14303 11.8564L7.91737 8.9681L3.13126 11.5251L2.38342 8.03552Z" fill="currentColor"/>
+        <path d="M129.066 16.989V7.65611H127.984V3.91794H129.066V2.29813L133.44 1.71436V3.91794H135.954V7.65611H133.44V13.2007H135.577V16.989H129.066Z" fill="currentColor"/>
+        <path d="M119.318 3.91772H125.905V7.75625H123.692V16.9888H119.318V3.91772Z" fill="currentColor"/>
+        <path d="M103.017 10.4659C103.017 6.32626 105.757 3.51636 109.402 3.51636C111.087 3.51636 112.369 4.09339 113.098 5.04676H113.199C113.174 4.9213 113.148 4.7457 113.148 4.34427V3.91777H117.146V16.9889H113.148V16.5122C113.148 16.1609 113.174 15.9101 113.199 15.7344H113.098C112.294 16.7882 110.911 17.3903 109.201 17.3903C105.606 17.3903 103.017 14.5804 103.017 10.4659ZM110.182 13.5518C111.816 13.5518 112.998 12.2973 112.998 10.3906C112.998 8.53405 111.816 7.30471 110.182 7.30471C108.573 7.30471 107.416 8.53405 107.416 10.3906C107.416 12.2973 108.573 13.5518 110.182 13.5518Z" fill="currentColor"/>
+        <path d="M95.5754 16.989V7.65611H94.4944V3.91794H95.5754V2.29813L99.95 1.71436V3.91794H102.464V7.65611H99.95V13.2007H102.087V16.989H95.5754Z" fill="currentColor"/>
+        <path d="M87.9025 7.35489C87.9025 7.7563 88.2043 7.95701 89.1597 8.4588L90.7939 9.3369C92.1514 10.0644 93.5092 10.9676 93.5092 13.2005C93.5092 15.6592 91.6737 17.3903 88.5059 17.3903C85.464 17.3903 84.0056 15.7846 83.4778 14.1539L86.4193 12.473C86.5952 13.0249 87.3496 14.0284 88.5059 14.0284C89.0089 14.0284 89.3355 13.7525 89.3355 13.3259C89.3355 12.9998 89.1346 12.7489 88.4557 12.3977L86.9221 11.5196C85.464 10.7168 84.0056 9.91391 84.0056 7.50542C84.0056 5.39799 85.9417 3.51636 88.5563 3.51636C91.2716 3.51636 92.6795 4.82095 93.4838 6.30119L90.7184 8.05736C90.3162 7.37999 89.5117 6.6775 88.6569 6.6775C88.2043 6.6775 87.9025 6.95348 87.9025 7.35489Z" fill="currentColor"/>
+        <path d="M83.0144 10.5764C83.0144 14.691 80.3245 17.5009 76.6539 17.5009C75.1453 17.5009 73.8631 17.0242 73.2597 16.2464H73.1591C73.1842 16.3468 73.2093 16.5224 73.2093 17.2249V23.1433L68.8851 22.4873V4.02837H72.8826V4.55524C72.8826 4.8563 72.8573 5.08208 72.8322 5.25771H72.9579C73.7875 4.22908 75.1704 3.62695 76.8548 3.62695C80.4248 3.62695 83.0144 6.43686 83.0144 10.5764ZM75.8493 7.41531C74.2151 7.41531 73.0585 8.64465 73.0585 10.5263C73.0585 12.433 74.2151 13.6624 75.8493 13.6624C77.4835 13.6624 78.6398 12.433 78.6398 10.5263C78.6398 8.64465 77.4835 7.41531 75.8493 7.41531Z" fill="currentColor"/>
+        <path d="M66.8608 8.68458V16.9889H62.4862V8.81003C62.4862 7.90683 61.8577 7.30471 61.0782 7.30471C60.2486 7.30471 59.6452 7.90683 59.6452 8.81003V16.9889H55.2706V8.81003C55.2706 7.90683 54.6422 7.30471 53.8376 7.30471C53.033 7.30471 52.4046 7.90683 52.4046 8.81003V16.9889H48.03V8.68458C48.03 5.6238 50.5942 3.51636 53.7872 3.51636C55.3712 3.51636 56.6284 4.0683 57.5333 5.02165C58.4636 4.0683 59.7709 3.51636 61.355 3.51636C64.5479 3.51636 66.8608 5.6238 66.8608 8.68458Z" fill="currentColor"/>
+        <path d="M46.0166 16.9888H34.351V3.91772H38.7255V13.2005H41.642V3.91772H46.0166V16.9888Z" fill="currentColor"/>
+        <path d="M19.4827 19.5466L22.8265 17.389C23.3293 18.5682 24.2092 19.1954 25.416 19.1954C27.025 19.1954 28.0308 18.1417 28.0308 16.5109V7.75505H21.0917V3.9165H32.4054V16.1095C32.4054 20.3996 29.665 23.1343 25.416 23.1343C22.3991 23.1343 20.5638 21.7795 19.4827 19.5466Z" fill="currentColor"/>
+      </svg>
+    </a>
+
+    <div class="user-profile" data-controller="toggle" data-action="click->toggle#toggle touch->toggle#toggle">
+      <div class="user-info">
+        <div>
+          <img class="avatar" alt="Admin One" src="https://secure.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61.png?default=mp&amp;rating=pg&amp;size=48">
+          <div>
+            <div class="user-name">Bruce Wayne</div>
+            <div class="user-email">bruce.wayne@email.com</div>
+          </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+        </svg>
+      </div>
+
+      <nav class="menu-component profile-popup hidden" data-toggle-target="toggleable" aria-label="User menu">
+        <ul class="menu-list">
+          <li class="menu-section">
+            <h2 class="menu-section-heading">Bruce Wayne</h2>
+
+            <ul class="menu-sub-list">
+              <li>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M11.828 2.25c-.916 0-1.699.663-1.85 1.567l-.091.549a.798.798 0 0 1-.517.608 7.45 7.45 0 0 0-.478.198.798.798 0 0 1-.796-.064l-.453-.324a1.875 1.875 0 0 0-2.416.2l-.243.243a1.875 1.875 0 0 0-.2 2.416l.324.453a.798.798 0 0 1 .064.796 7.448 7.448 0 0 0-.198.478.798.798 0 0 1-.608.517l-.55.092a1.875 1.875 0 0 0-1.566 1.849v.344c0 .916.663 1.699 1.567 1.85l.549.091c.281.047.508.25.608.517.06.162.127.321.198.478a.798.798 0 0 1-.064.796l-.324.453a1.875 1.875 0 0 0 .2 2.416l.243.243c.648.648 1.67.733 2.416.2l.453-.324a.798.798 0 0 1 .796-.064c.157.071.316.137.478.198.267.1.47.327.517.608l.092.55c.15.903.932 1.566 1.849 1.566h.344c.916 0 1.699-.663 1.85-1.567l.091-.549a.798.798 0 0 1 .517-.608 7.52 7.52 0 0 0 .478-.198.798.798 0 0 1 .796.064l.453.324a1.875 1.875 0 0 0 2.416-.2l.243-.243c.648-.648.733-1.67.2-2.416l-.324-.453a.798.798 0 0 1-.064-.796c.071-.157.137-.316.198-.478.1-.267.327-.47.608-.517l.55-.091a1.875 1.875 0 0 0 1.566-1.85v-.344c0-.916-.663-1.699-1.567-1.85l-.549-.091a.798.798 0 0 1-.608-.517 7.507 7.507 0 0 0-.198-.478.798.798 0 0 1 .064-.796l.324-.453a1.875 1.875 0 0 0-.2-2.416l-.243-.243a1.875 1.875 0 0 0-2.416-.2l-.453.324a.798.798 0 0 1-.796.064 7.462 7.462 0 0 0-.478-.198.798.798 0 0 1-.517-.608l-.091-.55a1.875 1.875 0 0 0-1.85-1.566h-.344ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Account Settings</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Profile</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-section">
+            <h2 class="menu-section-heading">Switch Account</h2>
+
+            <ul class="menu-sub-list">
+              <li>
+                <a href="#">
+                  <span>Bruce Wayne</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </li>
+              <li><a href="#">Wayne Enterprises</a></li>
+              <li><a href="#">Wayne Foundation</a></li>
+              <li>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Add Account</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-section">
+            <ul class="menu-sub-list">
+              <li>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm10.72 4.72a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H9a.75.75 0 0 1 0-1.5h10.94l-1.72-1.72a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+
+    <div class="search-container form-group">
+      <input type="search" class="form-control" placeholder="Search" aria-label="Search">
+    </div>
+
+    <nav class="nav-section">
+      <h2 class="section-header">Section header text</h2>
+      <ul class="nav-list">
+        <li>
+          <a href="#" class="nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav Item with a really really long name</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+        <nav class="left-nav__sub-nav" data-controller="dropdown" aria-label="More options" data-dropdown-open-value="false">
+          <button aria-haspopup="true" role="button" data-action="dropdown#toggle click@window->dropdown#hide" tabindex="0">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+              </svg>
+              Nav Item
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
+            </svg>
+          </button>
+
+          <div data-dropdown-target="menu" class="transform opacity-0 scale-95 hidden" role="menu" aria-label="More options menu">
+            <div class="left-nav__sub-nav-dropdown">
+              <ul>
+                <li>
+                  <a class="nav-item" target="_blank" href="#">Nested Item</a>
+                </li>
+                <li>
+                  <a class="nav-item" target="_blank" href="https://courses.gorails.com/advanced-ruby-for-rails-devs?utm_source=gorails">Nested Item</a>
+                </li>
+                <li>
+                  <a class="nav-item active" target="_blank" href="https://courses.gorails.com/payments-with-rails-master-class?utm_source=gorails">Nested Item</a>
+                </li>
+                <li>
+                  <a class="nav-item" target="_blank" href="https://courses.gorails.com/refactoring-rails?utm_source=gorails">Nested Item with really long name</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="nav-section">
+      <h2 class="section-header">Section header text</h2>
+      <ul class="nav-list">
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+            <span>Nav item</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+<% end %>

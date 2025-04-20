@@ -1,0 +1,10 @@
+<%= render "account_menu" if Jumpstart.config.team_accounts? && user_signed_in? && Current.other_accounts.any? %>
+
+<%# Place any links for the LEFT side of the nav bar here. For example: %>
+<%= nav_link_to "Dashboard", root_path, starts_with: root_path %>
+
+<%= nav_link_to "Properties", properties_path, starts_with: properties_path %>
+<%= nav_link_to "Finance Applications", finance_applications_path, starts_with: finance_applications_path %>
+<%= nav_link_to "Applicants", applicants_path, starts_with: applicants_path %>
+<%= nav_link_to "Documents", documents_path, starts_with: documents_path %>
+<%= nav_link_to "Employment Histories", employment_histories_path, starts_with: employment_histories_path %>

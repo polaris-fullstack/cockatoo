@@ -1,0 +1,78 @@
+<% content_for :title, "Installation" %>
+
+<%= h2_with_anchor "Dependencies" %>
+
+<p>To install dependencies, set up, and configure your application follow the latest instructions in the repository:</p>
+<p><%= link_to "Rails Installation", "https://github.com/jumpstart-pro/jumpstart-pro-rails#readme", class: "link font-bold", target: :_blank %></p>
+<p><%= link_to "iOS Installation", "https://github.com/jumpstart-pro/jumpstart-pro-ios#readme", class: "link font-bold", target: :_blank %></p>
+<p><%= link_to "Android Installation", "https://github.com/jumpstart-pro/jumpstart-pro-android#readme", class: "link font-bold", target: :_blank %></p>
+
+<div class="alert alert-info mt-4" role="alert">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+  </svg>
+  <div>
+    <h4>The GitHub repository is only accessible to customers.</h4>
+  </div>
+</div>
+
+<%= h3_with_anchor "Screencast" %>
+
+<p>This screencast will walk you through cloning Jumpstart Pro's git repository, installing dependencies, and setting up your brand new application so you can easily merge updates from git.</p>
+
+<div class="w-full mt-4">
+  <div class="embed-container">
+    <iframe src='https://www.youtube.com/embed/2DEneP450hU' frameborder='0' allowfullscreen></iframe>
+  </div>
+</div>
+
+<%= h2_with_anchor "Development" %>
+
+<p class="text-xl">Jumpstart Pro provides useful configurations to make development easier which are mentioned in more detail below.</p>
+
+<%= h3_with_anchor "Processes" %>
+
+<p>Use the <code>bin/dev</code> command to run your application's processes.</p>
+<p>These processes are defined in <code>Procfile</code> and <code>Procfile.dev</code> so they can be started and shutdown together.</p>
+
+<%= h3_with_anchor "Overmind" %>
+
+<p><%= link_to "Overmind", "https://github.com/DarthSim/overmind", target: :_blank, class: "link" %> is a process manager that runs the processes defined in <code>Procfile.dev</code>. Overmind is recommended because it allows you to join a process and interact with it.</p>
+<p>Run your application with:</p>
+
+<div class="not-prose">
+  <pre><code>bin/dev</code></pre>
+</div>
+
+<%= h3_with_anchor "Debugging with binding.irb, byebug, etc" %>
+<div class="not-prose">
+  <pre><code># Connect to the `web` process to be able to input commands:
+overmind connect web
+
+# Then disconnect by hitting:
+[Ctrl+B] (or your tmux prefix) and then [D].
+
+# Restart a specific process with:
+overmind restart web
+
+# Kill all running processes:
+overmind kill</code></pre>
+</div>
+
+<%= h3_with_anchor "Devcontainers & Docker", id: :docker %>
+
+<p>If you'd like to use Docker, Rails provides a <code>devcontainer</code> that uses Docker Compose to set up dependencies for consistent development across any OS.</p>
+<p>To use the devcontainer, you will need to open the directory in VS Code <code>code .</code> and select "Reopen in Container" when prompted.</p>
+<%= link_to image_tag("https://jumpstartpro.b-cdn.net/devcontainer.png", class: "h-32"), "https://jumpstartpro.b-cdn.net/devcontainer.png", target: :_blank %>
+<p> Once inside the Devcontainer, you can run Rails as normal using <code>bin/dev</code> in VS Code's terminal. Ports will be forwarded from OS localhost to the devcontainer.</p>
+
+<div class="not-prose">
+  <pre><code>bin/dev</code></pre>
+</div>
+
+<p>Then open <%= link_to "http://localhost:3000", "http://localhost:3000", target: :_blank, class: "link" %></p>
+
+<%= h3_with_anchor "Developing on Windows", id: :windows %>
+
+<p>If you'd like to run Jumpstart Pro Rails on Windows, we recommend using WSL2. You can find instructions here: <%= link_to "https://gorails.com/setup/windows", "https://gorails.com/setup/windows", target: :_blank %></p>
+<p>The <%= link_to "Devcontainer", "#docker", class: "link" %> is also a great option for development on Windows.</p>

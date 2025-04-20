@@ -1,0 +1,2 @@
+module FinanceApplicationsHelper
+end

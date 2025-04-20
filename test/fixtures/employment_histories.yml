@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  applicant: one
+  employer_name: MyString
+  address: MyString
+  state: MyString
+  postcode: MyString
+  phone: MyString
+  occupation: MyString
+  start_date: 2025-04-16
+  end_date: 2025-04-16
+  employment_type: MyString
+  accountant_name: MyString
+  accountant_firm: MyString
+  accountant_phone: MyString
+
+two:
+  applicant: two
+  employer_name: MyString
+  address: MyString
+  state: MyString
+  postcode: MyString
+  phone: MyString
+  occupation: MyString
+  start_date: 2025-04-16
+  end_date: 2025-04-16
+  employment_type: MyString
+  accountant_name: MyString
+  accountant_firm: MyString
+  accountant_phone: MyString

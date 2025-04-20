@@ -1,0 +1,62 @@
+<%= content_for :title, "New Application - Documents" %>
+
+<div class="container mx-auto px-4 my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Applications", applications_path, class: "text-black dark:text-white" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      New Application - Documents
+    </h1>
+  </div>
+
+  <div class="flex">
+    <div class="mr-8">
+      <%= render 'applications/sections/new_application_sidebar', current_step: :documents %>
+    </div>
+    <div class="flex-1 p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+      <%= form_with(model: @application, url: create_documents_applications_path, method: :post, multipart: true) do |form| %>
+        <%= render "error_messages", resource: form.object %>
+
+        <div class="mb-4">
+          <div class="mb-6">
+            <p class="mb-2 text-gray-700 font-medium">Please upload the following documents for your home loan application:</p>
+            <ul class="list-disc list-inside text-gray-600 space-y-1">
+              <li>Proof of identity (passport, driver's license)</li>
+              <li>Proof of income (pay slips, tax returns)</li>
+              <li>Bank statements (last 3 months)</li>
+              <li>Property documents (if applicable)</li>
+              <li>Any other relevant financial documents</li>
+            </ul>
+          </div>
+          
+          <div class="mt-4">
+            <%= form.label :documents, "Upload Documents", class: "block font-medium text-gray-700 mb-2" %>
+            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+              <div class="space-y-1 text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div class="flex text-sm text-gray-600">
+                  <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                    <span>Upload files</span>
+                    <%= form.file_field :documents, multiple: true, class: "sr-only", id: "file-upload" %>
+                  </label>
+                  <p class="pl-1">or drag and drop</p>
+                </div>
+                <p class="text-xs text-gray-500">PDF, PNG, JPG, GIF up to 10MB</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-between">
+          <%= link_to "Back: Liabilities", new_liabilities_applications_path, class: "btn btn-secondary" %>
+          <div>
+            <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "btn btn-secondary mr-2" %>
+            <%= form.submit "Next: Declaration", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="w-full mb-4 lg:w-1/4 lg:p-4">
+    <%= render partial: "account_navbar" %>
+  </div>
+
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <div class="p-4 bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-700 rounded-lg lg:p-10">
+      <h1 class="h3 mb-4"><%= t('.title', resource: resource.model_name.human) %></h1>
+
+      <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), method: :put, class: "mb-16", data: {controller: "bridge--form", action:"turbo:submit-start->bridge--form#submitStart turbo:submit-end->bridge--form#submitEnd"}) do |form| %>
+        <%= render "error_messages", resource: resource %>
+
+        <div class="form-group">
+          <%= form.label :avatar %>
+          <div class="flex items-center gap-4">
+            <%= image_tag avatar_url_for(form.object), class: "rounded-full" %>
+            <%= form.file_field :avatar, accept: "image/*", class: "file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :name, "Full name" %>
+          <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :email %>
+          <%= form.email_field :email, autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div class="alert alert-warning mb-4"><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
+        <% end %>
+
+        <% if I18n.available_locales.length > 1 %>
+          <div class="form-group">
+            <%= form.label :preferred_language %>
+            <%= form.select :preferred_language, language_options, {}, { class: "select" } %>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :theme %>
+          <%= form.select :theme, theme_options, {}, { class: "select" } %>
+        </div>
+
+        <div class="mt-2 form-group">
+          <%= form.button button_text(t('.update'), disable_with: t(".saving")), class: "btn btn-primary", "data-bridge--form-target": "submit", "data-bridge-title": t('.update') %>
+        </div>
+      <% end %>
+
+      <div class="flex flex-wrap flex-end">
+        <div class="flex-1">
+          <h3 class="mb-4"><%= t('.cancel_my_account') %></h3>
+          <p class="text-sm"><%= t(".cancel_my_account_description") %></p>
+          <div class="mt-2">
+            <%= button_to t('.cancel_my_account'), registration_path(resource_name),
+              method: :delete,
+              class: "btn btn-danger btn-outline primary",
+              data: {
+                controller: "bridge--sign-out",
+                action: "bridge--sign-out#signOut",
+                bridge__sign_out_path_value: api_v1_me_path,
+                turbo_confirm: t("are_you_sure"),
+                turbo_confirm_text: current_user.email,
+                turbo_confirm_description: t(".cancel_my_account_confirm_description_html")
+              } %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

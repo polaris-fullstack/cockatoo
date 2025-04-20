@@ -1,0 +1,21 @@
+<% content_for :title, "Databases" %>
+<% content_for :subtitle do %>
+  Jumpstart Pro uses PostgreSQL and Redis to run your application.
+<% end %>
+
+<%= h2_with_anchor "PostgreSQL" %>
+
+<p>Our primary database in Jumpstart Pro is PostgreSQL. It has fantastic support for json columns that we take advantage of in several places and can be extended with things like PostGIS for geospatial functionality.</p>
+
+<%= h2_with_anchor "Switching Databases" %>
+
+<p>If you want to use a different database, you can use Rails's db:system:change command, but you'll probably need to edit migrations and the code accordingly.</p>
+<div class="not-prose">
+  <pre><code>rails db:system:change --to=mysql</code></pre>
+</div>
+
+<%= h2_with_anchor "Redis" %>
+
+<p>Action Cable uses Redis as the backend by default. If you want any realtime functionality, you'll need to make sure Redis is installed and running. If you wish to change this, you can edit <code>config/cable.yml</code></p>
+<p>We're also using Redis as the cache store for Rails by default. If you'd like to switch to Memcached or something else, you can edit each of the environments configs and change the <code>cache_store</code></p>
+<p>If you're using Sidekiq, it also depends upon Redis for storing jobs.</p>

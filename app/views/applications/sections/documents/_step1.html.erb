@@ -1,0 +1,14 @@
+<%= render 'finance_applications/sections/_sidebar', current_section: :documents %>
+<div class="ml-72 p-8">
+  <h2 class="text-xl font-bold mb-6">Document Uploads</h2>
+  <%= form_with model: @finance_application, url: documents_step1_finance_application_path(@finance_application), method: :patch, html: {multipart: true} do |f| %>
+    <div class="mb-4">
+      <%= f.label :documents, 'Upload Documents' %>
+      <%= f.file_field :documents, multiple: true, class: 'form-control' %>
+    </div>
+    <div class="flex justify-between mt-6">
+      <%= link_to 'Back', liabilities_step1_finance_application_path(@finance_application), class: "btn btn-secondary" %>
+      <%= f.submit 'Save & Next', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

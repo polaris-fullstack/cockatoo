@@ -1,0 +1,23 @@
+<h4>Admin Users</h4>
+<p class="mb-4 text-sm text-gray-700 dark:text-gray-300">Admin users have access to the admin dashboard. They're marked in the database with the <code>admin</code> flag set to true.</p>
+
+<table class="table table-bordered text-left text-sm my-6">
+  <thead>
+    <tr>
+      <th class="bg-gray-100 dark:bg-gray-800 font-bold p-2">ID</th>
+      <th class="bg-gray-100 dark:bg-gray-800 font-bold p-2">Name</th>
+      <th class="bg-gray-100 dark:bg-gray-800 font-bold p-2">Email</th>
+    </tr>
+  </thead>
+  <tbody id="admin_users">
+    <%= render partial: "jumpstart/users/user", collection: User.where(admin: true).order(created_at: :asc), as: :user %>
+  </tbody>
+</table>
+
+<h4>Add an admin</h4>
+<div class="flex items-center gap-2">
+  <%= combobox_tag :id, users_path, placeholder: "Search users" do |combobox| %>
+    <% combobox.customize_hidden_field form: :admin_user %>
+  <% end %>
+  <%= submit_tag "Add", form: :admin_user, class: "btn btn-secondary" %>
+</div>

@@ -1,0 +1,17 @@
+<div data-controller="array-field">
+  <% Array.wrap(form.object.send(field.attribute_name)).each do |item| %>
+    <div class="row">
+      <%= text_field_tag "#{form.object_name}[#{field.attribute_name}][]", item, autocomplete: :off %>
+      <%= link_to "Remove", "#", data: { action: "array-field#remove" } %>
+    </div>
+  <% end %>
+
+  <%= link_to "Add", "#", data: { action: "array-field#add" } %>
+
+  <template data-array-field-target="template">
+    <div class="row">
+      <%= text_field_tag "#{form.object_name}[#{field.attribute_name}][]", nil, autocomplete: :off %>
+      <%= link_to "Remove", "#", data: { action: "array-field#remove" } %>
+    </div>
+  </template>
+</div>

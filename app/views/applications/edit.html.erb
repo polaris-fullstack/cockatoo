@@ -1,0 +1,111 @@
+<%= content_for :title, t("scaffold.edit.title", model: "Application") %>
+
+<div class="mb-6">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center">
+      <%= link_to applications_path, class: "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+      <% end %>
+      <h1 class="ml-2 text-2xl font-semibold text-gray-900 dark:text-white">Edit Application #<%= @application.id %></h1>
+      <span class="ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium <%= @application.status == 'complete' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' %>">
+        <%= @application.status.titleize %>
+      </span>
+    </div>
+    <div class="flex space-x-3">
+      <%= button_to @application, method: :delete, class: "inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500", form: { data: { turbo_confirm: t("are_you_sure") } } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+        Delete Application
+      <% end %>
+      <%= link_to application_path(@application), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+        View Application
+      <% end %>
+    </div>
+  </div>
+  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Last updated on <%= @application.updated_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+</div>
+
+<div class="flex flex-col md:flex-row gap-6">
+  <!-- Sidebar Navigation -->
+  <div class="w-full md:w-64 flex-shrink-0">
+    <div class="bg-white dark:bg-gray-800 shadow overflow-hidden rounded-lg sticky top-4">
+      <%= render 'sections/sidebar', application: @application %>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="flex-1">
+    <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
+      <div class="px-4 py-5 sm:px-6 border-b border-gray-200 dark:border-gray-700">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+          <% case @current_step 
+             when :loan_details %>
+              Loan Details
+          <% when :applicants %>
+              Applicants Information
+          <% when :properties %>
+              Property Details
+          <% when :assets %>
+              Assets Information
+          <% when :liabilities %>
+              Liabilities Information
+          <% when :documents %>
+              Required Documents
+          <% when :declaration %>
+              Declaration
+          <% else %>
+              Application Information
+          <% end %>
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-400">
+          <% case @current_step 
+             when :loan_details %>
+              Provide details about your loan requirements and purpose.
+          <% when :applicants %>
+              Enter information about all applicants for this loan.
+          <% when :properties %>
+              Provide details about the property you're financing.
+          <% when :assets %>
+              List all assets owned by the applicants.
+          <% when :liabilities %>
+              List all current debts and financial obligations.
+          <% when :documents %>
+              Upload all required documentation for your application.
+          <% when :declaration %>
+              Review and confirm all provided information.
+          <% else %>
+              Edit your application details below.
+          <% end %>
+        </p>
+      </div>
+      
+      <div class="px-4 py-5 sm:p-6">
+        <% case @current_step
+           when :loan_details
+             render 'sections/loan_details_form'
+           when :applicants
+             render 'sections/applicants_form'
+           when :properties
+             render 'sections/properties_form'
+           when :assets
+             render 'sections/assets_form'
+           when :liabilities
+             render 'sections/liabilities_form'
+           when :documents
+             render 'sections/documents_form'
+           when :declaration
+             render 'sections/declaration_form'
+           else
+             render 'form', application: @application
+           end %>
+      </div>
+    </div>
+  </div>
+</div>

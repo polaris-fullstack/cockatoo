@@ -1,0 +1,23 @@
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="w-full mb-4 lg:w-1/4 lg:p-4">
+    <%= render partial: "account_navbar" %>
+  </div>
+
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <div class="p-4 bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-800 rounded-lg lg:p-10">
+      <h1 class="h3 mb-4">
+        <%= link_to t("api_tokens.index.title"), api_tokens_path, class: "hover:text-black" %>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block w-5 h-5 text-gray-600">
+          <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+        </svg>
+
+        <%= t(".title") %>
+      </h1>
+
+      <%= render "form", api_token: @api_token %>
+
+      <%= link_to t("back"), api_tokens_path %>
+    </div>
+  </div>
+</div>

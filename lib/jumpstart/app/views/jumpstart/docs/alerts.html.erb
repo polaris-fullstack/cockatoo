@@ -1,0 +1,319 @@
+<% content_for :title, "Alerts & Notices" %>
+
+<%= h2_with_anchor "Alerts" %>
+
+<%= render "jumpstart/docs/snippet" do %>
+<div class="space-y-6">
+  <div class="alert" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+    </svg>
+    <div>
+      <h4>General Alert</h4>
+      <p>Additional text for context goes here</p>
+    </div>
+  </div>
+
+  <div class="alert alert-info" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+    </svg>
+    <div>
+      <h4>Info Alert</h4>
+      <p>Additional text for context goes here</p>
+    </div>
+  </div>
+
+  <div class="alert alert-success" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+    </svg>
+    <div>
+      <h4>Success Alert</h4>
+      <p>Additional text for context goes here</p>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+    </svg>
+    <div>
+      <h4>Danger/Error Alert</h4>
+      <p>Additional text for context goes here</p>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+    </svg>
+    <div>
+      <h4>Warning Alert</h4>
+      <p>Additional text for context goes here</p>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= h2_with_anchor "Alerts with actions" %>
+
+<%= render "jumpstart/docs/snippet" do %>
+  <div class="space-y-6">
+    <div class="alert" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+      </svg>
+      <div>
+        <h4>General Alert</h4>
+        <p>Additional text for context goes here</p>
+        <a href="#">View status</a>
+        <a href="#">Dismiss</a>
+      </div>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+      </svg>
+      <div>
+        <h4>Info Alert</h4>
+        <p>Additional text for context goes here</p>
+        <a href="#">View status</a>
+        <a href="#">Dismiss</a>
+      </div>
+    </div>
+
+    <div class="alert alert-success" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+      </svg>
+      <div>
+        <h4>Success Alert</h4>
+        <p>Additional text for context goes here</p>
+        <a href="#">View status</a>
+        <a href="#">Dismiss</a>
+      </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+      </svg>
+      <div>
+        <h4>Danger/Error Alert</h4>
+        <p>Additional text for context goes here</p>
+        <a href="#">View status</a>
+        <a href="#">Dismiss</a>
+      </div>
+    </div>
+
+    <div class="alert alert-warning" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+      </svg>
+      <div>
+        <h4>Warning Alert</h4>
+        <p>Additional text for context goes here</p>
+        <a href="#">View status</a>
+        <a href="#">Dismiss</a>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<%= h2_with_anchor "Notices" %>
+
+<%= render "jumpstart/docs/snippet" do %>
+  <div class="space-y-6">
+    <div class="banner" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
+      </svg>
+      <p class="leading-normal">This is a general notice</p>
+    </div>
+
+    <div class="banner banner-info" role="alert">
+      <svg class="icon-notice" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
+      </svg>
+      <p class="leading-normal">This is a info notice</p>
+    </div>
+
+    <div class="banner banner-success" role="alert">
+      <svg class="icon-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd" />
+      </svg>
+      <p class="leading-normal">This is a success notice</p>
+    </div>
+
+    <div class="banner banner-danger" role="alert">
+      <svg class="icon-danger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+      </svg>
+      <p class="leading-normal">This is a danger notice</p>
+    </div>
+
+    <div class="banner banner-warning" role="alert">
+      <svg class="icon-alert" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+      </svg>
+      <p class="leading-normal">This is a warning notice</p>
+    </div>
+  </div>
+<% end %>
+
+<%= h2_with_anchor "Toast Notifications" %>
+
+<p>
+  Toast notifications are visible in the upper right corner of this page. You can create toast notifications by passing a hash of options to the <code>flash</code> object.
+  Behind the scenes the <code>flash</code> object is used to instantiate and render an instance of the <code>ToastComponent</code> class found at <code>app/components/toast_component.rb</code>.
+  The following examples show how to create various toast notifications:
+</p>
+
+<pre><code># Basic Example
+flash[:notice] = {
+  title: "Basic Example",
+  description: "Toast description goes here."
+}
+</code></pre>
+
+<p>
+  You can also use the <code>ToastComponent</code> directly if you would like by instantiating an instance of the class as shown below:
+</p>
+
+<pre><code># Using the ToastComponent Class
+render ToastComponent.new(
+  title: "Basic Example",
+  description: "Toast description goes here."
+)
+</code></pre>
+
+
+<p>
+  Toasts can also have icons. By default Jumpstart provides named icons for <code>:alert, :notice, :success, :default</code> values. To use a built-in named icon pass the name of the icon
+  as the value to the <code>icon_name:</code> option as shown in the following examples below:
+</p>
+
+<pre><code># Toast with icon
+flash[:notice] = {
+  title: "Toast with icon",
+  description: "This is a toast description.",
+  icon_name: :notice # Supported values: :alert, :notice, :success, :default
+}
+</code></pre>
+
+<pre><code># Toast with icon
+render ToastComponent.new(
+  title: "Basic Example",
+  description: "Toast description goes here.",
+  icon_name: :success
+)
+</pre></code>
+
+<p>
+  There is also the option to use a custom icon by passing a block when instantiating a <code>ToastComponent</code> that calls <code>capture_for :icon</code> as shown in the below example:
+</p>
+
+<pre><code># Toast with custom icon
+render ToastComponent.new(
+  title: "Toast with icon",
+  description: "This is a toast description." do |component|
+    component.capture_for :icon do
+      <-- custom SVG here -->
+    end
+  end
+)
+</pre></code>
+
+<p>
+  Toast notifications can also have a link to help navigate users to completing any follow-up actions or next steps. To add such a link pass a hash to the <code>link</code>
+  option with the <code>text</code> and <code>url</code> keys and their values in hash passed to the <code>flash</code> object as shown in the example below:
+</p>
+
+<pre><code># Toast with link
+flash[:notice] = {
+  title: "Deployment successful.",
+  description: "This is a toast description.",
+  icon: :success,
+  link: {text: "View", url: root_path}
+}
+</code></pre>
+
+<p>
+  Or via <code>capture_for :link</code> when using a <code>ToastComponent</code> directly:
+</p>
+
+<pre><code># Toast with link
+render ToastComponent.new(
+  title: "Auto-dismissing toast",
+  description: "This is a toast description." do |component|
+    component.capture_for :link do
+      link_to "View", root_path
+    end
+  end
+)
+</code></pre>
+
+<p>
+  Toast notifications can also be set to dismiss automatically (user does not have to click the close button to remove the toast notification). To create an auto-dismissing
+  toast notification set the <code>dismissable</code> option to <code>false</code> and then set the interval which the toast will be auto-dismissed after via the
+  <code>dismiss_after</code> option as shown in the following example:
+</p>
+
+<pre><code># Auto-dismissing toast
+flash[:notice] = {
+  title: "Auto-dismissing toast",
+  description: "This is a toast description.",
+  icon: :default,
+  link: {text: "View", url: root_path}
+  dismissable: false,
+  dismiss_after: 5000,
+}
+</code></pre>
+
+<pre><code># Auto-dismissing toast
+render ToastComponent.new(
+  title: "Auto-dismissing toast",
+  description: "This is a toast description.",
+  dismissable: false,
+  dismiss_after: 5000
+)
+</code></pre>
+
+<div class="not-prose">
+  <div class="flex flex-col items-end justify-end py-6 px-4 fixed right-0 top-12 z-30 space-y-4 w-full max-w-[384px]">
+    <%= render ToastComponent.new title: "Basic Example", description: "Toast description goes here." %>
+
+    <%= render ToastComponent.new title: "Toast with icon", description: "This is a toast description." do |component| %>
+      <% component.capture_for :icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon-notice" width="20" height="20" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+        </svg>
+      <% end %>
+    <% end %>
+
+    <%= render ToastComponent.new title: "Deployment successful.", description: "This is a toast description." do |component| %>
+      <% component.capture_for :icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon-success" width="20" height="20" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+      <% end %>
+      <% component.capture_for :link do %>
+        <%= link_to "View", root_path %>
+      <% end %>
+    <% end %>
+
+    <%= render ToastComponent.new title: "Auto-dismissing toast", description: "This is a toast description.", dismissable: false, dismiss_after: 5000 do |component| %>
+      <% component.capture_for :icon do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon-default" width="20" height="20" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+        </svg>
+      <% end %>
+      <% component.capture_for :link do %>
+        <%= link_to "View", root_path %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

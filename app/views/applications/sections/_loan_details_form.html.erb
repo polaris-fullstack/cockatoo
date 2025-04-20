@@ -1,0 +1,41 @@
+<%# Determine URL and method based on persistence %>
+<% if @application.persisted? %>
+  <% url = loan_details_step1_application_path(@application) %>
+  <% method = :patch %>
+<% else %>
+  <% url = create_loan_details_applications_path %>
+  <% method = :post %>
+<% end %>
+
+<%= form_with(model: @application, url: url, method: method, html: { data: { controller: 'purpose-fields' } }) do |form| %>
+  <%= hidden_field_tag :current_step, :loan_details %>
+  <%= render "error_messages", resource: form.object %>
+  <div>
+    <div class="form-group">
+      <%= form.label :purpose, "Loan Purpose" %>
+      <%= form.select :purpose, options_for_select([
+        "Purchase of Home",
+        "Refinance Existing Home Loan",
+        "Renovation",
+        "Construction",
+        "Debt Consolidation",
+        "Investment Property",
+        "Equity Release",
+        "Bridging Loan",
+        "Other"
+      ], selected: form.object.purpose), { prompt: "Select loan purpose" }, class: "form-control" %>
+    </div>
+    <div class="form-group flex items-center space-x-2 mt-2">
+      <%= form.check_box :first_time_owner, class: "form-checkbox" %>
+      <%= form.label :first_time_owner, "Are you a first time home owner?", class: "mb-0" %>
+    </div>
+    <div class="form-group flex items-center space-x-2 mt-2">
+      <%= form.check_box :fhog_eligible, class: "form-checkbox" %>
+      <%= form.label :fhog_eligible, "Eligible for First Home Owner Grant (FHOG)?", class: "mb-0" %>
+    </div>
+  </div>
+  <div class="flex justify-between mt-6">
+    <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5" %>
+    <button type="submit" name="next" value="true" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-2">Next</button>
+  </div>
+<% end %>

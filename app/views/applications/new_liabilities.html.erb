@@ -1,0 +1,42 @@
+<%= content_for :title, "New Application - Liabilities" %>
+
+<div class="container mx-auto px-4 my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Applications", applications_path, class: "text-black dark:text-white" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      New Application - Liabilities
+    </h1>
+  </div>
+
+  <div class="flex">
+    <div class="mr-8">
+      <%= render 'applications/sections/new_application_sidebar', current_step: :liabilities %>
+    </div>
+    <div class="flex-1 p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+      <%= form_with(model: @application, url: create_liabilities_applications_path, method: :post) do |form| %>
+        <%= render "error_messages", resource: form.object %>
+
+        <div class="form-group">
+          <div class="flex items-center space-x-1">
+            <label for="liabilities" class="font-medium text-gray-700">Liabilities</label>
+            <div class="ml-1 text-gray-500 cursor-pointer" data-controller="tooltip" data-tooltip-content="Include all debts such as credit cards, loans, mortgages, etc.">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <%= form.text_area :liabilities, rows: 5, class: "form-textarea mt-1 block w-full", placeholder: "List your liabilities here..." %>
+        </div>
+
+        <div class="mt-6 flex justify-between">
+          <%= link_to "Back: Assets", new_assets_applications_path, class: "btn btn-secondary" %>
+          <div>
+            <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "btn btn-secondary mr-2" %>
+            <%= form.submit "Next: Documents", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

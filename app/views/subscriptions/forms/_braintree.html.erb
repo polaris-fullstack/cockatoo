@@ -1,0 +1,22 @@
+<%= form_with url: local_assigns.fetch(:url, subscriptions_path),
+  method: local_assigns.fetch(:method, :post),
+  data: {
+    controller: "braintree--dropin",
+    braintree__dropin_target: "form",
+    braintree__dropin_env: Pay::Braintree.environment,
+    braintree__dropin_client_token: Pay.braintree_gateway.client_token.generate,
+  } do |f| %>
+
+  <%= tag.div nil, data: { braintree__dropin_target: "dropin" } %>
+
+  <div class="my-8 text-center">
+    <%= f.button t("subscriptions.new.subscribe"),
+      class: "btn btn-primary btn-large btn-block",
+      data: {
+        action: "click->braintree--dropin#submit",
+        disable_with: t("subscriptions.new.processing")
+      } %>
+  </div>
+
+  <%= f.hidden_field :plan, value: @plan.to_param %>
+<% end %>

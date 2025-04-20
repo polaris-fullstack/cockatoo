@@ -1,0 +1,24 @@
+<nav class="top-nav fixed top-0 left-0 right-0 p-0 border-none z-10" data-controller="toggle" data-action="toggle-nav-bar@window->toggle#toggle">
+  <section class="nav-container hidden lg:flex" data-toggle-target="toggleable">
+    <nav><%= render "left_nav" %></nav>
+    <nav><%= render "right_nav" %></nav>
+
+    <% if user_signed_in? %>
+      <nav>
+        <%= nav_link_to t(".profile"), edit_user_registration_path %>
+        <%= nav_link_to t(".password"), edit_account_password_path %>
+        <%= nav_link_to t(".accounts"), accounts_path %>
+        <%= button_to t(".sign_out"), destroy_user_session_path, method: :delete, data: {controller: "bridge--sign-out", bridge__sign_out_path_value: api_v1_auth_path, action: "bridge--sign-out#signOut"} %>
+      </nav>
+
+      <%= tag.div data: {
+          controller: "notifications",
+          notifications_account_id_value: current_account.id,
+          notifications_account_unread_value: @notification_counts[current_account.id],
+          notifications_total_unread_value: @notification_counts.values.sum,
+        } do %>
+        <%= tag.div data: {controller: "bridge--notification-badge", notifications_target: "nativeBadge"} %>
+      <% end %>
+    <% end %>
+  </section>
+</nav>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="<%= class_names(dark: current_user&.dark_theme?, "hotwire-native": hotwire_native_app?) %>" lang="<%= I18n.locale %>">
+  <head>
+    <%= render "head" %>
+  </head>
+  <body data-controller="theme bridge--menu-button <%= "bridge--notification-token" if user_signed_in? %>" data-theme-preference-value="<%= current_user&.theme %>" class="bg-gray-50 dark:bg-gray-900">
+    <% if user_signed_in? %>
+      <%# Only render the main sidebar if we are NOT in the applications controller %>
+      <% unless controller_name == 'applications' %>
+        <%= render "application/modern_sidebar" %>
+      <% end %>
+      <%= render "application/modern_header" %>
+      
+      <div class="pl-64 pt-16">
+        <%= impersonation_banner %>
+        <%= render "flash" %>
+        
+        <main class="py-6 px-8">
+          <%= yield %>
+        </main>
+      </div>
+    <% else %>
+      <header>
+        <%= impersonation_banner %>
+        <%= render "flash" %>
+        <%= render "navbar" %>
+      </header>
+
+      <main>
+        <%= yield %>
+      </main>
+    <% end %>
+
+    <%= render "footer" unless hotwire_native_app? %>
+  </body>
+</html>

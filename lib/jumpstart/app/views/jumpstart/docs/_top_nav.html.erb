@@ -1,0 +1,25 @@
+<nav class="top-nav fixed top-0 w-full z-10">
+ <section class="logo">
+    <%= link_to root_path do %>
+      <%= render_svg "logo", styles: "fill-current" %>
+      <span class="sr-only"><%= Jumpstart.config.application_name %></span>
+    <% end %>
+  </section>
+
+  <section class="nav-container hidden lg:flex">
+    <nav>
+      <%= nav_link_to "← Back to the app", main_app.root_path %>
+      <%= nav_link_to "Configuration", root_path, target: :_blank %>
+    </nav>
+  </section>
+
+  <section class="w-44 nav-user-controls">
+    <select name="theme" id="theme-select">
+      <option disabled>Theme</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="juicy">Juicy</option>
+      <option value="jumpstart">Jumpstart</option>
+    </select>
+  </section>
+</nav>

@@ -1,0 +1,10 @@
+<div id="<%= dom_id property %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Address</p>
+    <%= property.address %>
+  </div>
+
+  <% if action_name != "show" %>
+    <%= link_to "View this property", property, class: "btn btn-secondary" %>
+  <% end %>
+</div>

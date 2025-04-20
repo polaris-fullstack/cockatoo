@@ -1,0 +1,20 @@
+<%= render 'finance_applications/sections/_sidebar', current_section: :properties %>
+<div class="ml-72 p-8">
+  <h2 class="text-xl font-bold mb-6">Property Type & Occupancy</h2>
+  <%= form_with model: @finance_application, url: properties_step1_finance_application_path(@finance_application), method: :patch do |f| %>
+    <%= f.fields_for :properties do |property_form| %>
+      <div class="mb-4">
+        <%= property_form.label :property_type, 'Property Type' %>
+        <%= property_form.select :property_type, ['House', 'Apartment/Unit', 'Townhouse', 'Villa', 'Land Only', 'Off-the-plan', 'Dual Occupancy', 'Commercial', 'Rural', 'Other'], {prompt: 'Select property type'}, class: 'form-control' %>
+      </div>
+      <div class="mb-4">
+        <%= property_form.label :occupancy_type, 'Occupancy Type' %>
+        <%= property_form.select :occupancy_type, ['Owner Occupied', 'Investment', 'Holiday Home', 'Other'], {prompt: 'Select occupancy type'}, class: 'form-control' %>
+      </div>
+    <% end %>
+    <div class="flex justify-between mt-6">
+      <%= link_to 'Back', applicants_step1_finance_application_path(@finance_application), class: "btn btn-secondary" %>
+      <%= f.submit 'Save & Next', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

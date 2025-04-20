@@ -1,0 +1,9 @@
+one:
+  kind: MyString
+  title: MyString
+  published_at: 2019-04-09 17:21:27
+
+two:
+  kind: MyString
+  title: MyString
+  published_at: 2019-04-09 17:21:27

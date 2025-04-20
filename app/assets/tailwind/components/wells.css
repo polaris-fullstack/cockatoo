@@ -1,0 +1,51 @@
+.well {
+  background: var(--base-bg-high);
+  color: var(--base-text);
+  padding: 32px;
+  font-style: normal;
+  text-align: center;
+  border-radius: 8px;
+  max-width: 768px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  a {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+}
+
+.well-lg {
+  padding: 64px;
+  gap: 16px;
+
+  h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  a {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

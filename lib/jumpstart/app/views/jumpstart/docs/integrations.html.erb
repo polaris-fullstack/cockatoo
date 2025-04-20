@@ -1,0 +1,107 @@
+<% content_for :title, "Integrations" %>
+<% content_for :subtitle do %>
+  Jumpstart Pro has support for integrating your app with several third party services.
+<% end %>
+
+<%= h2_with_anchor "Enabling Integrations" %>
+
+<p>To enable an integration you can do so in the Integrations section of the Jumpstart Pro configuration wizard UI located at <%= link_to nil, "/jumpstart", target: :_blank, class: "link" %>.</p>
+
+<%= link_to("https://jumpstartpro.b-cdn.net/jsp-integration-config-wizard-v1.png", target: "_blank") do %>
+  <%= image_tag "https://jumpstartpro.b-cdn.net/jsp-integration-config-wizard-v1.png", class: "block mx-auto", alt: "Screenshot of Jumpstart Pro Integrations configuration wizard", size: "800" %>
+<% end %>
+
+<%= h2_with_anchor "Error & Performance Monitoring" %>
+
+<p>Jumpstart Pro can configure these services for you for reporting errors and performance in production.</p>
+
+<div>
+  <%= link_to "AirBrake", "https://airbrake.io", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Error and performance monitoring</span>
+</div>
+
+<div>
+  <%= link_to "AppSignal", "https://appsignal.com/r/f422858ba7", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Error and performance monitoring</span>
+</div>
+
+<div>
+  <%= link_to "Honeybadger", "https://www.honeybadger.io/?affiliate=vq7ujA", target: :_blank, class: "link" %>
+  <%= badge "Recommended", class: "ml-3" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Error and uptime monitoring</span>
+</div>
+
+<div>
+  <%= link_to "Rollbar", "https://rollbar.com", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Error monitoring</span>
+</div>
+
+<div>
+  <%= link_to "Scout APM", "https://scoutapm.com", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Performance monitoring</span>
+</div>
+
+<div>
+  <%= link_to "Sentry", "https://sentry.io", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Error monitoring</span>
+</div>
+
+<div>
+  <%= link_to "Skylight", "https://www.skylight.io/r/rIsVdwGGkNQs", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Performance monitoring</span>
+</div>
+
+<%= h2_with_anchor "Marketing & Support" %>
+
+<p>Jumpstart Pro can configure these services for you so you can keep reach your customers.</p>
+
+<div>
+  <%= link_to "ConvertKit", "https://app.convertkit.com/users/signup?plan=free-limited&referral_token=0e2cf99c-d0f7-48d4-b497-3664e7dc90c4", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Email marketing</span>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300"><%= link_to "Gem", "https://github.com/excid3/convertkit-ruby", target: :_blank, class: "link" %></span>
+  <%= badge "Recommended", class: "ml-3" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Get 100 subscribers for free using our link!</span>
+</div>
+
+<div>
+  <%= link_to "Drip", "https://getdrip.com", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Email marketing</span>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300"><%= link_to "Gem", "https://github.com/DripEmail/drip-ruby", target: :_blank, class: "link" %></span>
+</div>
+
+<div>
+  <%= link_to "Intercom", "https://intercom.io", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Customer engagement and support</span>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300"><%= link_to "Gem", "https://github.com/intercom/intercom-rails", target: :_blank, class: "link" %></span>
+</div>
+
+<div>
+  <%= link_to "MailChimp", "http://eepurl.com/BG875", target: :_blank, class: "link" %>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">Email marketing</span>
+  <span class="ml-3 text-sm text-gray-700 dark:text-gray-300"><%= link_to "Gem", "https://github.com/amro/gibbon", target: :_blank, class: "link" %></span>
+</div>
+
+<p>Jumpstart Pro auto-configures API clients for Convertkit, Drip, and Mailchimp. You can use <code>Jumpstart::Clients</code> to access the clients.</p>
+<p>Here are some examples of how you can subscribe your users to mailing lists:</p>
+<div class="not-prose">
+  <pre class="lang-ruby"><code># Add a subscriber to ConvertKit
+Jumpstart::Clients.convertkit.add_subscriber_to_form(form_id, email, options={})
+Jumpstart::Clients.convertkit.add_subscriber_to_sequence(sequence_id, email, options={})
+Jumpstart::Clients.convertkit.add_subscriber_to_tag(tag_id, email, options={})
+
+# Add a subscriber to Drip
+Jumpstart::Clients.drip.create_or_update_subscriber(email, options={})
+
+# Add a subscriber to Mailchimp
+Jumpstart::Clients.mailchimp.lists("<LIST ID>").members.create(
+  body: {
+    email_address: "foo@bar.com",
+    status: "subscribed",
+    merge_fields: {
+      FNAME: "First Name",
+      LNAME: "Last Name"
+    }
+  }
+)
+</code></pre>
+</div>

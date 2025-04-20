@@ -1,0 +1,69 @@
+.font-display {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+
+h1, .h1 {
+	font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+h2, .h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h3, .h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h4, .h4 {
+	font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h5, .h5 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h6, .h6 {
+  font-weight: 700;
+}
+
+.link {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem;
+  text-decoration-line: underline;
+
+  &:hover,
+  &:focus {
+    color: var(--text-primary-hover);
+  }
+}
+
+code {
+  background: var(--bg-disabled);
+  border-radius: 0.25rem;
+  color: var(--base-text);
+  font-size: 0.875rem;
+  padding: 0.25rem 0.375rem;
+}
+
+pre code {
+  padding: 0.5rem 0.75rem;
+  display: block;
+}

@@ -1,0 +1,49 @@
+<%= content_for :title, "New Application - Declaration" %>
+
+<div class="container mx-auto px-4 my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Applications", applications_path, class: "text-black dark:text-white" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      New Application - Declaration
+    </h1>
+  </div>
+
+  <div class="flex">
+    <div class="mr-8">
+      <%= render 'applications/sections/new_application_sidebar', current_step: :declaration %>
+    </div>
+    <div class="flex-1 p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+      <%= form_with(model: @application, url: create_declaration_applications_path, method: :post) do |form| %>
+        <%= render "error_messages", resource: form.object %>
+
+        <div class="form-group">
+          <div class="p-4 border border-gray-300 rounded-md bg-gray-50 mb-4">
+            <h3 class="text-lg font-medium text-gray-900 mb-2">Declaration</h3>
+            <p class="text-sm text-gray-700 mb-4">By submitting this application, I declare that:</p>
+            <ul class="list-disc list-inside text-sm text-gray-700 space-y-2 mb-4">
+              <li>All information provided in this application is true, complete, and correct.</li>
+              <li>I understand that providing false or misleading information may result in the rejection of my application or other legal consequences.</li>
+              <li>I authorize Cockatoo Financial Pty Ltd to verify any information provided in this application.</li>
+              <li>I consent to the collection, use, and disclosure of my personal information as described in the Privacy Policy.</li>
+              <li>I understand that submitting this application does not guarantee approval of my loan request.</li>
+            </ul>
+          </div>
+          
+          <div class="form-group flex items-center space-x-2 mt-4">
+            <%= form.check_box :declaration, class: "form-checkbox h-5 w-5 text-blue-600" %>
+            <%= form.label :declaration, "I have read and agree to the above declaration", class: "ml-2 text-gray-700" %>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-between">
+          <%= link_to "Back: Documents", new_documents_applications_path, class: "btn btn-secondary" %>
+          <div>
+            <%= button_tag 'Save Draft', name: 'save_draft', value: true, class: "btn btn-secondary mr-2" %>
+            <%= form.submit "Submit Application", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
