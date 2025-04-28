@@ -384,10 +384,10 @@ GEM
       railties (>= 5.2)
     rexml (3.4.1)
     rotp (6.3.0)
-    rqrcode (2.2.0)
+    rqrcode (3.0.0)
       chunky_png (~> 1.0)
-      rqrcode_core (~> 1.0)
-    rqrcode_core (1.2.0)
+      rqrcode_core (~> 2.0)
+    rqrcode_core (2.0.0)
     rubocop (1.75.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -554,7 +554,7 @@ DEPENDENCIES
   rails (~> 8.0.0)
   receipts (~> 2.1)
   rotp (~> 6.2)
-  rqrcode (~> 2.1)
+  rqrcode (~> 3.0)
   rubocop-rails-omakase
   ruby-oembed (~> 0.18.0)
   selenium-webdriver (>= 4.20.1)
@@ -714,8 +714,8 @@ CHECKSUMS
   responders (3.1.1) sha256=92f2a87e09028347368639cfb468f5fefa745cb0dc2377ef060db1cdd79a341a
   rexml (3.4.1) sha256=c74527a9a0a04b4ec31dbe0dc4ed6004b960af943d8db42e539edde3a871abca
   rotp (6.3.0) sha256=75d40087e65ed0d8022c33055a6306c1c400d1c12261932533b5d6cbcd868854
-  rqrcode (2.2.0) sha256=23eea88bb44c7ee6d6cab9354d08c287f7ebcdc6112e1fe7bcc2d010d1ffefc1
-  rqrcode_core (1.2.0) sha256=cf4989dc82d24e2877984738c4ee569308625fed2a810960f1b02d68d0308d1a
+  rqrcode (3.0.0) sha256=44890d5209a435f089875ac03050db1f391606c7fdabc5695c97dec0980840aa
+  rqrcode_core (2.0.0) sha256=1e40b823ab57a96482a417fff5dd5c33645a00cea6ef5d9e342fecc5ef91d9ab
   rubocop (1.75.2) sha256=8efde647e278417e8074421b007e0d7d7c591482ef99d980528b18fea015a7c8
   rubocop-ast (1.44.0) sha256=77fdaf4aacf0c7d1ef887b075686124fb4ae5743d42ff7e73bb1c0d6b61b5d0a
   rubocop-performance (1.25.0) sha256=6f7d03568a770054117a78d0a8e191cefeffb703b382871ca7743831b1a52ec1
