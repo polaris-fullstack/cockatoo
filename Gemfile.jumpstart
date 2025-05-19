@@ -9,7 +9,7 @@ gem "hotwire_combobox", "~> 0.3"
 gem "madmin", "~> 2.0"
 gem "name_of_person", "~> 1.0"
 gem "nokogiri", ">= 1.12.5" # Security update
-gem "noticed", "~> 2.2"
+gem "noticed", "~> 2.7"
 gem "pagy", "~> 9.0"
 gem "pay", "~> 9.0"
 gem "prefixed_ids", "~> 1.2"
